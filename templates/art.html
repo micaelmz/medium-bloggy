@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exhibit Art</title>
+</head>
+<body>
+    {% for art in all_art %}
+        {{ art.category_name }}<br>
+        {{ art.price }}<br>
+        {{ art.medium }}<br>
+        {{ art.style }}<br>
+        {{ art.size_width }}<br>
+        {{ art.size_height }}<br>
+        {{ art.size_depth }}<br>
+    {% endfor %}
+</body>
+</html>
