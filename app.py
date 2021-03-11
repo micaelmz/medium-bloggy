@@ -18,13 +18,11 @@ mongo = PyMongo(app)
 
 @app.route("/")
 @app.route("/get_art")
-def get_art():
-    art = mongo.db.art.find()
-    return render_template("art.html", all_art=art)
+def get_all_posts():
+    posts = mongo.db.blog_posts.find()
+    return render_template("index.html", all_posts=posts)
 
 
 # tell our app how and where to run our application
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=True)
+    app.run(debug=True)

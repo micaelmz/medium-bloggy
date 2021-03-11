@@ -1,7 +1,7 @@
 
-![Exhibit Art](assets/images/game-logo.PNG)
+![Medium.Rare](assets/images/game-logo.PNG)
 
-![Exhibit Art Responsive](assets/testing/results/amiresponsive.PNG)
+![Medium.Rare Responsive](assets/testing/results/amiresponsive.PNG)
 
 - [Overview](#overview)
 - [UX](#ux)
@@ -30,7 +30,7 @@
 
 ## Overview
 
-Exhibit Art is a place for artists to show-case their work and a place for potential buyers to connect with the artists. You can view the deployed site [here](https://leithdm.github.io/milestone-project-3/).
+Medium.Rare is a place for bloggers/writers to show-case their work. You can view the deployed site [here](https://leithdm.github.io/milestone-project-3/).
 
 <br/>
 
@@ -45,44 +45,36 @@ The objective for this milestone project is to "*build a full-stack site that al
 ### User Stories
 
 - User Stories were written from the perspective of the user:
-    - the registered artist.
-    - the registered prospective buyer of art that wants to connect with the artist. 
-    - the non-registered pubic that just wants to look at art. 
+    - the registered user that wants to write articles or comment on other articles. 
+    - the non-registered user that just wants to read blog articles, without contributing content. 
     - the site administrator.
 
 <br/>
 
-"**__As an *artist*, I__** ______________________________________________"
+"**__As a *registered user*, I__** ______________________________________________"
 
-- should be able to register an account with the site as an artist. 
-- should be able to create an artist portfolio page, with relevant details. 
+- should be able to register an account with the site in order to publish articles. 
+- should be able to create a blogger portfolio page, with relevant details. 
 - should be able to CRUD my portfolio page. 
-- should be able to CRUD items of art to my portfolio. 
-- should be able to see how many views my art has received. 
-- should be able to see how many likes my art has received. 
-- should be notified if a buyer has shown interest in a particular piece of art.
+- should be able to CRUD articles from my portfolio. 
+- should be able to see how many views my articles have received. 
+- should be able to see how many likes my articles have received.
+- should be able to reply to any comments written about my articles.
+- should be able to make comments on other blog articles. 
 
-"**__As a *buyer*, I__** ______________________________________________"
+"**__As a *non-registered user*, I__** ______________________________________________"
 
-- should be able to register an account with the site as an buyer. 
-- should be able to create a buyer portfolio page, with basic details. 
-- should be able to CRUD my portfolio page. 
-- should be able to see what items of art I like.
-- should be able to see what items of art I have viewed. 
-- should be able to see what artists I have contacted. 
-- should be presented with a gallery of art on the main page. 
-- should be able to click on any item of art in the gallery to see more details. 
-- should be able to search through the art based on art type. 
-- should be able to click on a 'contact the artist' button and be presented with a contact form. 
-- should be able to fill out the form in order to contact and interact further with the artist.
+- should be presented with blog article on the main page. 
+- should be able to click on an article on the main page to read more about it. 
+- should be able to search through articles. 
+- should be able to click on the author of the blog to find out more details about them.
 
 "**__As an *administrator*, I__** ______________________________________________"
 
 - should have an adminstrator account setup. 
 - should be able to see an administrator dashboard page. 
-- should be able to see a list of all art items, with relevant details. 
-- should be able to see a list of all artists, with relevant details. 
-- should be able to edit the main page carousel in order to select whatever images I would like to display. 
+- should be able to see a list of all blog items, with relevant details. 
+- should be able to see a list of all blog authors, with relevant details.
 
 <br/>
 
