@@ -1,7 +1,7 @@
 
-![Medium.Rare](assets/images/game-logo.PNG)
+![Medium Bloggy](assets/images/game-logo.PNG)
 
-![Medium.Rare Responsive](assets/testing/results/amiresponsive.PNG)
+![Medium Bloggy Responsive](assets/testing/results/amiresponsive.PNG)
 
 - [Overview](#overview)
 - [UX](#ux)
@@ -30,7 +30,7 @@
 
 ## Overview
 
-Medium.Rare is a place for bloggers/writers to show-case their work. You can view the deployed site [here](https://leithdm.github.io/milestone-project-3/).
+Medium Bloggy is a place for bloggers/writers to show-case their work. You can view the deployed site [here](https://leithdm.github.io/milestone-project-3/).
 
 <br/>
 
