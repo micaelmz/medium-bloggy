@@ -42,7 +42,7 @@ def register():
         if existing_user:
             # User already exists
             flash("You've already signed up with that email, log in instead!")
-            return redirect(url_for('login'))
+            # return redirect(url_for('login'))
 
         hash_and_salted_password = generate_password_hash(
             form.password.data,
@@ -61,7 +61,8 @@ def register():
         session["user"] = form.email.data
         flash("Registration Successful")
         # login_user(new_user)
-        return redirect(url_for("profile", username=session["user"]))
+        # return redirect(url_for("profile", username=session["user"]))
+        return render_template("register.html", form=form)
     return render_template("register.html", form=form)
 
 

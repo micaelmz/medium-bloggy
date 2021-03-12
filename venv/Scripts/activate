@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\leith\Documents\web-development\mp3-medium.rare\venv"
+VIRTUAL_ENV="C:\Users\leith\Documents\web-development\medium-bloggy\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
