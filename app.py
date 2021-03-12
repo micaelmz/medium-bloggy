@@ -7,7 +7,7 @@ from flask_pymongo import PyMongo
 from flask_ckeditor import CKEditor
 from flask_bootstrap import Bootstrap
 from bson.objectid import ObjectId
-from forms import RegisterForm, LoginForm
+from forms import RegisterForm, LoginForm, CreatePostForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date
 
@@ -107,6 +107,25 @@ def logout():
 def show_post(post_id):
     requested_post = mongo.db.blog_posts.find_one({"_id": ObjectId(post_id)})
     return render_template("post.html", post=requested_post)
+
+
+@app.route("/create-post", methods=["GET", "POST"])
+def create_post():
+    form = CreatePostForm()
+    if form.validate_on_submit():
+        new_post = {
+            "title": form.title.data,
+            "subtitle": form.subtitle.data,
+            "body": form.body.data,
+            "img_url": form.img_url.data,
+            "author": session["user"],
+            "date": date.today().strftime("%B %d, %Y")
+        }
+        mongo.db.blog_posts.insert_one(new_post)
+        flash("Post Successfully Added")
+        return redirect(url_for("get_all_posts"))
+
+    return render_template("create_post.html", form=form)
 
 
 if __name__ == "__main__":
