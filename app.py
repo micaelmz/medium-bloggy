@@ -52,7 +52,7 @@ def register():
             "password": hash_and_salted_password,
             "name": form.name.data
         }
-
+        # insert user into database
         mongo.db.users.insert_one(new_user)
 
         # put the new user into 'session' cookie
@@ -101,6 +101,12 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("get_all_posts"))
+
+
+@app.route("/post/<post_id>", methods=["GET", "POST"])
+def show_post(post_id):
+    requested_post = mongo.db.blog_posts.find_one({"_id": ObjectId(post_id)})
+    return render_template("post.html", post=requested_post)
 
 
 if __name__ == "__main__":
