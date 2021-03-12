@@ -7,10 +7,9 @@ from flask_pymongo import PyMongo
 from flask_ckeditor import CKEditor
 from flask_bootstrap import Bootstrap
 from bson.objectid import ObjectId
-from forms import RegisterForm
+from forms import RegisterForm, LoginForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date
-
 
 if os.path.exists("env.py"):
     import env
@@ -40,9 +39,8 @@ def register():
             {"email": form.email.data})
 
         if existing_user:
-            # User already exists
             flash("You've already signed up with that email, log in instead!")
-            # return redirect(url_for('login'))
+            return redirect(url_for('login'))
 
         hash_and_salted_password = generate_password_hash(
             form.password.data,
@@ -60,14 +58,54 @@ def register():
         # put the new user into 'session' cookie
         session["user"] = form.email.data
         flash("Registration Successful")
-        # login_user(new_user)
-        # return redirect(url_for("profile", username=session["user"]))
-        return render_template("register.html", form=form)
+        return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html", form=form)
 
 
-# tell our app how and where to run our application
+@app.route('/login', methods=["GET", "POST"])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
+
+        # check if username already exists
+        existing_user = mongo.db.users.find_one({"email": email})
+        # Email doesn't exist or password incorrect.
+        if not existing_user:
+            flash("That email does not exist, please try again.")
+            return redirect(url_for('login'))
+        elif not check_password_hash(existing_user["password"], password):
+            flash('Password incorrect, please try again.')
+            return redirect(url_for('login'))
+        else:
+            session["user"] = email
+            flash(f"Welcome, {existing_user['email']}")
+            return redirect(
+                url_for("profile", username=session["user"]))
+    return render_template("login.html", form=form)
+
+
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    username = mongo.db.users.find_one(
+        {"email": session["user"]})["email"]
+    if session["user"]:
+        return render_template("profile.html", username=username)
+
+    return redirect(url_for("login"))
+
+
+@app.route("/logout")
+def logout():
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("get_all_posts"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=False)
+
+    # app.run(debug=True)
