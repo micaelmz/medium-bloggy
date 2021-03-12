@@ -90,9 +90,11 @@ def login():
 def profile(username):
     username = mongo.db.users.find_one(
         {"email": session["user"]})["email"]
+    posts = mongo.db.blog_posts.find({"author": username })
+    # if logged in
     if session["user"]:
-        return render_template("profile.html", username=username)
-
+        return render_template("profile.html", username=username, posts=posts)
+    # if not logged in, return to login page
     return redirect(url_for("login"))
 
 
