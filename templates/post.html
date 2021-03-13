@@ -35,6 +35,27 @@
                        href="{{ url_for('edit_post', post_id=post._id) }}">Edit Post</a>
                 </div>
                 {% endif %}
+
+                <!-- Comments Area-->
+                {% if session.user %}
+                {{ ckeditor.load() }}
+                {{ ckeditor.config(name='comment_text') }}
+                {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "success"}) }}
+                {% endif %}
+                <div class="col-lg-8 col-md-10 mx-auto comment">
+                    {% for comment in comments: %}
+                    <ul class="commentList">
+                        <li>
+                            <div class="commenterImage">
+                                <i class="far fa-user"></i>
+                            </div>
+                            <div class="commentText">
+                                {{comment.text|safe}}
+                                <span class="date sub-text">{{comment.comment_author}}</span>
+                            </div>
+                        </li>
+                    </ul>
+                    {% endfor %}
             </div>
         </div>
     </div>

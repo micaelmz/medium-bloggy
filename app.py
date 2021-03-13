@@ -7,7 +7,7 @@ from flask_pymongo import PyMongo
 from flask_ckeditor import CKEditor
 from flask_bootstrap import Bootstrap
 from bson.objectid import ObjectId
-from forms import RegisterForm, LoginForm, CreatePostForm
+from forms import RegisterForm, LoginForm, CreatePostForm, CommentForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date
 
@@ -107,8 +107,23 @@ def logout():
 
 @app.route("/post/<post_id>", methods=["GET", "POST"])
 def show_post(post_id):
+    form = CommentForm()
     requested_post = mongo.db.blog_posts.find_one({"_id": ObjectId(post_id)})
-    return render_template("post.html", post=requested_post)
+    requested_post_comments = mongo.db.blog_comments.find({"parent_post": ObjectId(post_id)})
+
+    if form.validate_on_submit():
+        if not session["user"]:
+            flash("You need to login or register to comment.")
+            return redirect(url_for("login"))
+
+        new_comment = {
+            "text": form.comment_text.data,
+            "comment_author": session["user"],
+            "parent_post": ObjectId(post_id)
+        }
+
+        mongo.db.blog_comments.insert_one(new_comment)
+    return render_template("post.html", post=requested_post, comments=requested_post_comments, form=form)
 
 
 @app.route("/create-post", methods=["GET", "POST"])
