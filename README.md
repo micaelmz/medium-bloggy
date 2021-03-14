@@ -30,7 +30,7 @@
 
 ## Overview
 
-Medium Bloggy is a place for bloggers/writers to show-case their work. You can view the deployed site [here](https://leithdm.github.io/milestone-project-3/).
+Medium Bloggy is a place for bloggers/writers to show-case their work. You can view the deployed site [here]().
 
 <br/>
 

@@ -173,9 +173,17 @@ def delete_post(post_id):
     return redirect(url_for('get_all_posts'))
 
 
-if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=False)
+@app.route("/delete_comment/<comment_id>")
+def delete_comment(comment_id):
+    mongo.db.blog_comments.remove({"_id": ObjectId(comment_id)})
+    flash("Comment Successfully Deleted")
+    post_id = request.args.get('post_id')
+    return redirect(url_for("show_post", post_id=post_id))
 
-    # app.run(debug=True)
+
+if __name__ == "__main__":
+    # app.run(host=os.environ.get("IP"),
+    #         port=int(os.environ.get("PORT")),
+    #         debug=False)
+
+    app.run(debug=True)
