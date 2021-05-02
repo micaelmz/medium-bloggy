@@ -169,7 +169,7 @@ A full list of future features **can be viewed in the [Product Backlog](https://
 3. **In Progress** - user stories currently being worked on from current sprint.
 4. **Done** - user stories completed, and tested.
 
-Along with tracking user stories, Github Projects was also used to track bugs. **The full list of user stories/bugs can be viewed [here](https://github.com/leithdm/milestone-project-3/projects/1).**
+Along with tracking user stories, Github Projects was also used to track bugs. **The full list of user stories/bugs can be viewed [here](https://github.com/leithdm/medium-bloggy/projects/2).**
 
 ![GitHub Projects in action](wireframes/agile-project-management.png)
 
@@ -209,7 +209,7 @@ To clone this project from GitHub:
 4. Change the current working directory to the location where you want the cloned directory to be made.
 5. Type **git clone**, and then paste the URL copied in Step 2
 
-`git clone https://github.com/leithdm/milestone-project-3.git`
+`git clone https://github.com/leithdm/medium-bloggy`
 
 1. Press **Enter**. Your local clone will be created.
 
@@ -225,13 +225,6 @@ To clone this project from GitHub:
   - The [background image]([https://link](http://www.classicgaming.cc/classics/asteroids/graphics)) used in the game menu was again provided by [Classic Gaming](http://www.classicgaming.cc/classics/asteroids/). A filter was applied to darken the image.
   - The in-game star background was provided by [Jake Weirick](https://unsplash.com/photos/Q_RBVFFXR_g) via [Unsplash](https://unsplash.com/).
   - The patterned background visible on desktop was provided by [Hero Patterns](http://www.heropatterns.com/).
-- Game Programming Tutorials:
-  - [Make JavaScript Asteroids in One Video](https://www.youtube.com/watch?v=HWuU5ly0taA&ab_channel=DerekBanas): a great introductory video.
-  - [Code Asteroids in JavaScript (1979 Atari game) - tutorial](https://www.youtube.com/watch?v=H9CSWMxJx84&ab_channel=freeCodeCamp.org): another excellent tutorial.
-  - [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial) tutorials provided by [MDN web docs](https://developer.mozilla.org/en-US/).
-  - [Code Your First Game: Arcade Classic in JavaScript on Canvas](https://www.udemy.com/course/code-your-first-game/): a free course on [Udemy](https://www.udemy.com/).
-  - [How to Program Games: Tile Classic in JS for HTML5 Canvas](https://www.udemy.com/course/how-to-program-games/): a paid course on [Udemy](https://www.udemy.com/).
-
 
 <br/>
 
