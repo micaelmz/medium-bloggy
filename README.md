@@ -1,12 +1,11 @@
 
-![Medium Bloggy](assets/images/game-logo.PNG)
-
-![Medium Bloggy Responsive](assets/testing/results/amiresponsive.PNG)
+![Medium Bloggy Responsive](static/img/am-i-responsive.PNG)
 
 - [Overview](#overview)
 - [UX](#ux)
   - [User Stories](#user-stories)
   - [Design](#design)
+    - [Framework](#framework)
     - [Color Scheme](#color-scheme)
     - [Icons](#icons)
     - [Typography](#typography)
@@ -16,7 +15,10 @@
   - [Future Features](#future-features)
 - [Technologies Used](#technologies-used)
   - [Front-End Technologies](#front-end-technologies)
-  - [Miscellaneous Technologies](#miscellaneous-technologies)
+  - [Back-End Technologies](#back-end-technologies)
+    - [Flask](#flask)
+    - [Heroku](#heroku)
+    - [Python](#python)
 - [Agile Project Management](#agile-project-management)
 - [Testing](#testing)
 - [Deployment](#deployment)
@@ -30,7 +32,9 @@
 
 ## Overview
 
-Medium Bloggy is a place for bloggers/writers to show-case their work. You can view the deployed site [here]().
+Medium Bloggy is a site for amateur bloggers and writers to show-case their work. You can view the deployed site [here](http://mediumbloggy.herokuapp.com/). 
+The title of this site i.e *'Medium Bloggy'* is a homage to the [Medium.com](https://medium.com/) website, upon which this site is loosely based. 
+This site is an example of [social journalism](https://en.wikipedia.org/wiki/Social_journalism), which relies heavily on community involvement and engagement in order to create the content. 
 
 <br/>
 
@@ -44,10 +48,19 @@ The objective for this milestone project is to "*build a full-stack site that al
 
 ### User Stories
 
-- User Stories were written from the perspective of the user:
-    - the registered user that wants to write articles or comment on other articles. 
-    - the non-registered user that just wants to read blog articles, without contributing content. 
+- User Stories were written from the perspective of x3 different user(s):
+    - the non-registered user that wants to read blog articles, without contributing content. 
+    - the registered user that wants to write blog articles or comment on other articles.
     - the site administrator.
+
+<br/>
+
+"**__As a *non-registered user*, I__** ______________________________________________"
+
+- should be presented with blog article on the main page. 
+- should be able to click on an article on the main page to read more about it. 
+- should be able to search through articles. 
+- should be able to click on the author of the blog to find out more details about them.
 
 <br/>
 
@@ -62,47 +75,51 @@ The objective for this milestone project is to "*build a full-stack site that al
 - should be able to reply to any comments written about my articles.
 - should be able to make comments on other blog articles. 
 
-"**__As a *non-registered user*, I__** ______________________________________________"
-
-- should be presented with blog article on the main page. 
-- should be able to click on an article on the main page to read more about it. 
-- should be able to search through articles. 
-- should be able to click on the author of the blog to find out more details about them.
+<br/>
 
 "**__As an *administrator*, I__** ______________________________________________"
 
-- should have an adminstrator account setup. 
 - should be able to see an administrator dashboard page. 
-- should be able to see a list of all blog items, with relevant details. 
+- should be able to see a list of all blog posts, with relevant details. 
 - should be able to see a list of all blog authors, with relevant details.
+- should be able to delete blog posts. 
 
 <br/>
 
 ### Design
 
+- The overall concept was to emulate a *printed newspaper* by having a minimalist black and white color scheme, with a modern sans serif typography. 
+
+<br/>
+
+#### Framework
+
+- [StartBootstrap](https://startbootstrap.com/) provide a free Bootstrap template called ['Clean-Blog'](https://startbootstrap.com/previews/clean-blog). This template was used to provide an initial style and coloring to the site. 
+- [Flask 1.1](https://flask.palletsprojects.com/en/1.1.x/) is a micro-framework that is used to render the back-end Python with front-end Bootstrap. 
 
 <br/>
 
 #### Color Scheme
 
-- ![#800080](https://placehold.it/15/800080/800080) purple text/background
-- ![#B22234](https://placehold.it/15/B22234/B22234) red button
-- ![#FFFF00](https://placehold.it/15/FFFF00/FFFF00) yellow button/text
-- ![#00C0A3](https://placehold.it/15/00C0A3/00C0A3) green text
-- ![#02AFFF](https://placehold.it/15/02AFFF/02AFFF) blue dashboard (score, level, lives)
-- All of these colors are set at `:root` level within the [style.css](assets/css/style.css) file. The use of css custom properties (variables) is in keeping with the principles of DRY.
+In keeping with the *printed newspaper* theme, minimalist colors are employed. 
 
+- ![#212529](https://via.placeholder.com/15/212529/000000?text=+) `#212529` body text and background
+- ![#868e96](https://via.placeholder.com/15/868e96/000000?text=+) `#868e96` block quotes
+- ![#0085A1](https://via.placeholder.com/15/0085A1/000000?text=+) `#0085A1` hover
+
+<br/>
 
 #### Icons
 
-- [Font Awesome 5.6.1](https://fontawesome.com/) icons are used in the [how to play](how-to-play.html) page, and in the gamepad controller buttons.
+- [Font Awesome 5.6.1](https://fontawesome.com/) icons are used for the social media links. 
 
 <br/>
 
 #### Typography
 
 - [Google Fonts](https://fonts.google.com/) were used across the site, namely:
-  - [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P) : game title and menu buttons.
+  - [Lora](https://fonts.google.com/specimen/Lora) : for body text.   
+
 
 <br/>
 
@@ -113,9 +130,9 @@ The objective for this milestone project is to "*build a full-stack site that al
 <br/>
 
 
-|    Home Page   |    Sound-Options.html     |    High-Scores.html    |
-|    :----:      |    :----:                 |    :----:              |
-|[Desktop/Mobile](wireframes/home-page.png)|[Desktop/Mobile](wireframes/sound-options.png)|[Desktop/Mobile](wireframes/high-scores-page.png)|
+|    Home Page   |    Registration Page     |    Login Page    |    Individual Post    |    Profile Page    
+|    :----:      |    :----:                |    :----:        |    :----:             |    :----:        |
+|[Desktop/Mobile](wireframes/main.png)|[Desktop/Mobile](wireframes/registration.png)|[Desktop/Mobile](wireframes/login.png)|[Desktop/Mobile](wireframes/post.png)|[Desktop/Mobile](wireframes/profile.png)
 
 <br/>
 
@@ -124,14 +141,20 @@ The objective for this milestone project is to "*build a full-stack site that al
 ## Features
 
 ### Existing Features
-  - **Administrator Dashboard:** displaying Art, Artists. 
-
+  - **Register Account:** Anybody can register for free and create their own unique account. I have built-in authentication and authorization to check certain criteria is met before an account is validated. All passwords are hashed for security purposes.
+  - **Log In to Account:** For existing users, I have more authentication and authorization incorporated to check that the hashed passwords and username match the database.
+  - **Log Out of Account:** Users can easily log out of their account by clicking the logout button. 
+  - **View All Posts:** On the *home* page, all blog posts are initially displayed, based on date of submission. 
+  - **Search Posts:** The user can search for a relevant blog post, searched by Title. 
+  - **CRUD Posts:** A registered user can create, read, update and delete their blog posts.
+  - **Administrator Superuser:** With ability to delete and blog post from database. 
 
 <br/>
 
 ### Future Features
 A full list of future features **can be viewed in the [Product Backlog](https://github.com/leithdm/milestone-project-3/projects/1)**, but we will briefly mention some of them here:
--  **Menu Items:** high score Leaderboard, e.g. top 10 high scores.
+-  **Pagination:** the ability to paginate blog-post search results.
+-  **Bookmark:** the ability for a user to bookmark articles as part of a 'Reading List'.
 
 
 <br/>
@@ -140,22 +163,34 @@ A full list of future features **can be viewed in the [Product Backlog](https://
 
 ## Technologies Used
 
+- [PyCharm](https://www.jetbrains.com/pycharm/) - used as the primary IDE.
+- [GitHub](https://github.com/) - used for remote storage of code.
+- [TinyPNG](https://tinypng.com/) - used to optimize (.jpg, .png) images for faster loading.
+- [Balsamiq](https://balsamiq.com/) - used to create the project's wireframes.
+
 ### Front-End Technologies
 
 - [HTML5](https://en.wikipedia.org/wiki/HTML5) - used to provide content and structure.
 - [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets) - used to provide styling.
-- [JavaScript ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - the game is built entirely from vanilla JavaScript.
+- [JavaScript ES6](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [Google Fonts](https://fonts.google.com/) - used to provide font styling.
 - [Am I Responsive?](http://ami.responsivedesign.is/) - used to show site responsiveness.
 
-<br/>
+### Back-End Technologies
 
-### Miscellaneous Technologies
+#### Flask
+- [Flask 1.1](https://flask.palletsprojects.com/en/1.1.x/) - used as a web micro-framework. 
+- [Flask-WTF 0.14.3](https://flask-wtf.readthedocs.io/en/stable/) - for integrating Flask and [WTForms](https://wtforms.readthedocs.io/en/2.3.x/). 
+- [Flask-Bootstrap 3.3.7.1](https://pythonhosted.org/Flask-Bootstrap/) - packages Bootstrap into an easy to use extension.
+- [Flask-CKEditor 0.4.4.1](https://pypi.org/project/Flask-CKEditor/) - CKEditor integration for Flask. 
 
-- [VS Code](https://code.visualstudio.com/) - used as the primary IDE.
-- [GitHub](https://github.com/) - used for remote storage of code.
-- [TinyPNG](https://tinypng.com/) - used to optimize (.jpg, .png) images for faster loading.
-- [Balsamiq](https://balsamiq.com/) - used to create the project's wireframes.
+#### Heroku
+- [Heroku](https://www.heroku.com/) - to host the site.
+  
+#### Python
+- [Python 3.9](https://www.python.org/downloads/release/python-390/) - back-end programming language. 
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas2) - to store database in the cloud. 
+- [PyMongo 3.11.2](https://pymongo.readthedocs.io/en/stable/) - Python API for working with MongoDB.
 
 <br/>
 
@@ -171,7 +206,7 @@ A full list of future features **can be viewed in the [Product Backlog](https://
 
 Along with tracking user stories, Github Projects was also used to track bugs. **The full list of user stories/bugs can be viewed [here](https://github.com/leithdm/medium-bloggy/projects/2).**
 
-![GitHub Projects in action](wireframes/agile-project-management.png)
+![GitHub Projects in action](wireframes/agile-project-management.PNG)
 
 <br/>
 
@@ -187,31 +222,113 @@ The testing process can be viewed [here](TESTING.md).
 
 ## Deployment
 
-**How to deploy**
+**Local Deployment**
 
-To deploy this page to GitHub Pages from its [GitHub repository](https://github.com/leithdm/milestone-project-3), the following steps were taken:
+In order to run this project locally on your own system, you will need the following installed:
 
-1. From the menu items near the top of the page, select **Settings**.
-2. Scroll down to the GitHub **Pages** section.
-3. Under **Source** click the drop-down menu labelled **None** and select **Master Branch**.
-4. The page refreshes automatically, and the website is now deployed.
-5. Scroll back down to the **GitHub Pages** section in **Settings** to retrieve the link to the deployed website. It may take a short time to go live, but typically < 60 seconds.
+- [Python3](https://www.python.org/downloads/) to run the application.
+- [PIP](https://pypi.org/project/pip/) to install all app requirements.
+- Any IDE such as Microsoft [Visual Studio Code](https://code.visualstudio.com/).
+- [GIT](https://git-scm.com/) for cloning and version control.
+- [MongoDB](https://www.mongodb.com/) to develop your own database either locally or remotely on MongoDB Atlas.
 
+Next, there's a series of steps to take in order to proceed with local deployment:
+
+- Clone this GitHub repository by either clicking the green Clone or download button and downloading the project as a zip-file (remember to unzip it first), or by entering the following into the Git CLI terminal:
+
+`git clone https://github.com/leithdm/medium-bloggy.git`
+
+- Navigate to the correct file location after unpacking the files.
+
+`cd <path to folder>`
+
+Create a `env.py` file with the relevant credentials. See the sample env.py file below, for example:
+
+
+
+```
+import os
+
+os.environ.setdefault("MONGO_URI", "YOUR_MONGO_URI")
+
+os.environ.setdefault("MONGO_DBNAME", "YOUR_MONGO_DBNAME")
+
+os.environ.setdefault("SECRET_KEY", "YOUR_SECRET_KEY")
+
+os.environ.setdefault("IP", "YOUR_IP")
+
+os.environ.setdefault("PORT", "YOUR_PORT")
+
+```
+
+- Install all requirements from the requirements.txt file using this command:
+
+`sudo -H pip3 -r requirements.txt`
+
+- Sign up for a free account on [MongoDB](https://www.mongodb.com/) and create a new Database called `blog`. The Collections in that database should be as follows:
+
+**blog_comments**
+
+```
+_id: <ObjectId>
+text: <string>
+comment_author: <string>
+parent_post: <ObjectId>
+
+```
+
+**blog_posts**
+
+```
+_id: <ObjectId>
+title: <string>
+subtitle: <string>
+body: <string>
+img_url: <string>
+author: <string>
+date: <string>
+```
+
+**users**
+
+```
+_id: <ObjectId>
+email: <string>
+password: <string>
+name: <string>
+```
+
+- You should now be able to launch your app using:
+
+`flask run`
+
+- The site should be running on `localhost` on an address similar to `http://127.0.0.1:5000`.
 <br/>
 
-**How to run locally:**
+**Remote Deployment:**
 
-To clone this project from GitHub:
+This site is currently deployed on Heroku using the master branch on GitHub. To implement this project on Heroku, the following steps were taken:
 
-1. Under the repository’s name, click **Clone or download**.
-2. In the **Clone with HTTPS** section, copy the given URL.
-3. In your IDE of choice, open **Git Bash**.
-4. Change the current working directory to the location where you want the cloned directory to be made.
-5. Type **git clone**, and then paste the URL copied in Step 2
+1. Create a **requirements.txt** file so [Heroku](https://www.heroku.com/) can install the required dependencies to run the app.
 
-`git clone https://github.com/leithdm/medium-bloggy`
+`sudo pip3 freeze --local > requirements.txt`
 
-1. Press **Enter**. Your local clone will be created.
+2. Create a **Procfile** to tell Heroku what type of application is being deployed, and how to run it.
+
+`echo web: python run.py > Procfile`
+
+3. Sign up for a free Heroku account, create your project app, and click the **Deploy** tab, at which point you can *Connect GitHub* as the Deployment Method, and select *Enable Automatic Deployment*.
+
+4. In the Heroku **Settings** tab, click on the *Reveal Config Vars* button to configure environmental variables as follows:
+
+```
+IP : 0.0.0.0
+MONGO_DBNAME: <your_MongoDB_name>
+MONGO_URI : <link_to_your_MongoDB>
+PORT : 5000
+SECRET_KEY : <your_secret_key>
+```
+5. Your app should be successfully deployed to Heroku. 
 
 <br/>
 
@@ -222,9 +339,6 @@ To clone this project from GitHub:
 ### Media
 
 - Images:
-  - The [background image]([https://link](http://www.classicgaming.cc/classics/asteroids/graphics)) used in the game menu was again provided by [Classic Gaming](http://www.classicgaming.cc/classics/asteroids/). A filter was applied to darken the image.
-  - The in-game star background was provided by [Jake Weirick](https://unsplash.com/photos/Q_RBVFFXR_g) via [Unsplash](https://unsplash.com/).
-  - The patterned background visible on desktop was provided by [Hero Patterns](http://www.heropatterns.com/).
 
 <br/>
 
