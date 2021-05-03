@@ -118,8 +118,8 @@ In keeping with the *printed newspaper* theme, minimalist colors are employed.
 #### Typography
 
 - [Google Fonts](https://fonts.google.com/) were used across the site, namely:
-  - [Lora](https://fonts.google.com/specimen/Lora) : for body text.   
-
+  - [Lora](https://fonts.google.com/specimen/Lora) - for body text.   
+  - [Open Sans](https://fonts.google.com/specimen/Open+Sans) - for headings. 
 
 <br/>
 

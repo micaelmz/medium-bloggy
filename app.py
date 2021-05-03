@@ -181,9 +181,16 @@ def delete_comment(comment_id):
     return redirect(url_for("show_post", post_id=post_id))
 
 
-if __name__ == "__main__":
-    # app.run(host=os.environ.get("IP"),
-    #         port=int(os.environ.get("PORT")),
-    #         debug=False)
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    posts = list(mongo.db.blog_posts.find({"$text": {"$search": query}}))
+    return render_template("index.html", all_posts=posts)
 
-    app.run(debug=True)
+
+if __name__ == "__main__":
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=False)
+
+    # app.run(debug=True)
