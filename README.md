@@ -136,6 +136,14 @@ In keeping with the *printed newspaper* theme, minimalist colors are employed.
 
 <br/>
 
+
+### Schema
+
+The database consists of x3 collections, which we can represent as follows:
+
+![Schema](wireframes/schema.PNG)
+
+
 ---
 
 ## Features

@@ -24,6 +24,7 @@ ckeditor = CKEditor(app)
 mongo = PyMongo(app)
 
 
+
 @app.route("/")
 def get_all_posts():
     posts = mongo.db.blog_posts.find()
@@ -56,7 +57,7 @@ def register():
         mongo.db.users.insert_one(new_user)
 
         # put the new user into 'session' cookie
-        session["user"] = form.email.data
+        session["user"] = form.name.data
         flash("Registration Successful")
         return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html", form=form)
@@ -79,8 +80,8 @@ def login():
             flash('Password incorrect, please try again.')
             return redirect(url_for('login'))
         else:
-            session["user"] = email
-            flash(f"Welcome, {existing_user['email']}")
+            session["user"] = existing_user['name']
+            flash(f"Welcome Back, {existing_user['name'].capitalize()}")
             return redirect(
                 url_for("profile", username=session["user"]))
     return render_template("login.html", form=form)
@@ -89,7 +90,7 @@ def login():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
     username = mongo.db.users.find_one(
-        {"email": session["user"]})["email"]
+        {"name": session["user"]})["name"]
     posts = mongo.db.blog_posts.find({"author": username })
     # if logged in
     if session["user"]:
@@ -100,7 +101,6 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
-    flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("get_all_posts"))
 
@@ -182,8 +182,8 @@ def delete_comment(comment_id):
 
 
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=False)
+    # app.run(host=os.environ.get("IP"),
+    #         port=int(os.environ.get("PORT")),
+    #         debug=False)
 
-    # app.run(debug=True)
+    app.run(debug=True)
