@@ -1,27 +1,17 @@
-{% extends 'bootstrap/base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
-
-{% block content %}
 {% include "header.html" %}
 
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url('https://images.unsplash.com/photo-1534794566638-771ed3d3b053?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
-            <h1>Log In</h1>
-            <span class="subheading">Welcome Back!</span>
-          </div>
+<main role="main">
+    <div class="jumbotron jumbotron-fluid login-jumbotron">
+        <div class="container text-center">
+            <h1 class="display-2 mt-5">Sign In</h1>
+            <p>Welcome Back.</p>
         </div>
-      </div>
     </div>
-  </header>
 
+  <!-- Main Content -->
   <div class="container">
     <div class="row">
-
       <div class="col-lg-8 col-md-10 mx-auto content">
       {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -34,7 +24,8 @@
       </div>
     </div>
   </div>
-
+</main>
+<br>
+<hr>
 
 {% include "footer.html" %}
-{% endblock %}

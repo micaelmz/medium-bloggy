@@ -2,20 +2,21 @@
 <html lang="en">
 
 <head>
-
+    <!-- META TAGS -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="Blogging Ireland; journalism">
 
+    <!-- TITLE | FAVICON -->
     <title>Medium Bloggy</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+          integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
-    <!-- Custom fonts for this template -->
-    <link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet"
-          type="text/css">
+    <!-- Custom Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet'
           type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
@@ -23,46 +24,51 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ url_for('static', filename='css/clean-blog.css')}}" rel="stylesheet">
-
 </head>
 
 <body>
-
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-    <div class="container">
-        <a class="navbar-brand" href="{{url_for('get_all_posts')}}">Medium Bloggy</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('get_all_posts') }}">Home</a>
-                </li>
-                {% if not session.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('register') }}">Register</a>
-                </li>
-                {% else: %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('create_post') }}">Write</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
-                </li>
-                {% endif %}
-            </ul>
+<header>
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+        <div class="container">
+            <a class="navbar-brand mb-0 h1" href="{{url_for('get_all_posts')}}">Medium Bloggy</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                    data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                    aria-label="Toggle navigation"><i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('get_all_posts') }}">Home</a>
+                        <span class="sr-only">(current)</span>
+                    </li>
+                    {% if not session.user %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('login') }}">Sign In</a>
+                        <span class="sr-only">(current)</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('register') }}">
+                            <div class="btn btn-dark btn-sm rounded-pill">Get Started</div>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    {% else: %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('create_post') }}">Write</a>
+                        <span class="sr-only">(current)</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+                        <span class="sr-only">(current)</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                        <span class="sr-only">(current)</span>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
-
+    </nav>
+</header>

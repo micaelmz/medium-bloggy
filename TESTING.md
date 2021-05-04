@@ -25,97 +25,24 @@
 
 <br/>
 
-- [Home Page (index.html)](https://github.com/leithdm/milestone-project-2/blob/master/index.html)
+- [Home Page (index.html)](https://github.com/leithdm/medium-bloggy/blob/master/templates/index.html)
+- [Create Post (create_post.html)](https://github.com/leithdm/medium-bloggy/blob/master/templates/create_post.html)
+- [Footer (footer.html)](https://github.com/leithdm/medium-bloggy/blob/master/templates/footer.html)
+- [Header (header.html)](https://github.com/leithdm/medium-bloggy/blob/master/templates/header.html)  
+- [Login (login.html)](https://github.com/leithdm/medium-bloggy/blob/master/templates/login.html)
+- [Post (post.html)](https://github.com/leithdm/medium-bloggy/blob/master/templates/post.html)
+- [Profile (profile.html)](https://github.com/leithdm/medium-bloggy/blob/master/templates/profile.html)
+- [Register (register.html)](https://github.com/leithdm/medium-bloggy/blob/master/templates/register.html)
 
 <br/>
 
-![Home Page HTML Validator](assets/testing/results/index.html-testing.PNG)
+**Result:** the W3C Validator for HTML does not understand the Jinja templating syntax, therefore shows repeat Errors. See sample output below for `index.html`. 
+Aside from the Jinja warnings and errors, all other code is valid for each of the .html pages listed above. 
 
-**Result:** No Errors or warnings
+![Home Page HTML Validator](static/testing/index.html-testing.PNG)
 
-----------
 
-<br/>
 
-- [Create Post (create_post.html)](https://github.com/leithdm/milestone-project-2/blob/master/index.html)
-
-<br/>
-
-![Create Post HTML Validator](assets/testing/results/index.html-testing.PNG)
-
-**Result:** No Errors or warnings
-
-----------
-
-<br/>
-
-- [Footer (footer.html)](https://github.com/leithdm/milestone-project-2/blob/master/index.html)
-
-<br/>
-
-![Footer HTML Validator](assets/testing/results/index.html-testing.PNG)
-
-**Result:** No Errors or warnings
-
-----------
-
-<br/>
-
-- [Header (header.html)](https://github.com/leithdm/milestone-project-2/blob/master/index.html)
-
-<br/>
-
-![Header Page HTML Validator](assets/testing/results/index.html-testing.PNG)
-
-**Result:** No Errors or warnings
-
-----------
-
-<br/>
-
-- [Login (login.html)](https://github.com/leithdm/milestone-project-2/blob/master/index.html)
-
-<br/>
-
-![Login HTML Validator](assets/testing/results/index.html-testing.PNG)
-
-**Result:** No Errors or warnings
-
-----------
-
-<br/>
-
-- [Post (post.html)](https://github.com/leithdm/milestone-project-2/blob/master/index.html)
-
-<br/>
-
-![Post HTML Validator](assets/testing/results/index.html-testing.PNG)
-
-**Result:** No Errors or warnings
-
-----------
-
-<br/>
-
-- [Profile (profile.html)](https://github.com/leithdm/milestone-project-2/blob/master/index.html)
-
-<br/>
-
-![Profile HTML Validator](assets/testing/results/index.html-testing.PNG)
-
-**Result:** No Errors or warnings
-
-----------
-
-<br/>
-
-- [Register (register.html)](https://github.com/leithdm/milestone-project-2/blob/master/index.html)
-
-<br/>
-
-![Register HTML Validator](assets/testing/results/index.html-testing.PNG)
-
-**Result:** No Errors or warnings
 
 ----------
 
@@ -127,12 +54,12 @@
 
 <br/>
 
-![CSS Validator](assets/testing/results/style.css-testing.PNG)
+![CSS Validator](static/testing/css-testing.PNG)
 
-**Result:** No Errors, 36 warnings. Regarding the warnings, the validator found x22 generic warnings related to the use of CSS variables. The W3C validator [does not support CSS variables](https://github.com/w3c/css-validator/issues/111), so these warnings are expected. The validator also warned that deepest possible browser support for stylings such as `box-shadow`, `transform` and `user-select` were "unknown vendor extensions", however the use of `webkit`, `moz` and `ms` prefixes in front of these items is required in order to provide full browser support. In summary, all 36 warnings were noted, but ignored.
+**Result:** No Errors, 10 warnings.
 
 
-![CSS Validator](assets/testing/results/style.css-warnings-testing.PNG)
+![CSS Validator](static/testing/css-warnings-testing.PNG)
 
 <br/>
 

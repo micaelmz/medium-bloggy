@@ -1,15 +1,9 @@
-{% extends 'bootstrap/base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
-
-{% block content %}
 {% include "header.html" %}
-  <!-- Page Header -->
-  <header class="masthead" style="background-image: url('https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=682&q=80')">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="page-heading">
+
+<main role="main">
+    <div class="jumbotron jumbotron-fluid write-jumbotron text-center">
+          <div class="page-heading mt-5">
             {% if is_edit: %}
             <h1>Edit Post</h1>
             {% else: %}
@@ -17,10 +11,7 @@
             {% endif %}
             <span class="subheading">Lets get creative!</span>
           </div>
-        </div>
-      </div>
     </div>
-  </header>
 
   <div class="container">
     <div class="row">
@@ -31,6 +22,7 @@
       </div>
     </div>
   </div>
-
+</main>
+<br>
+<hr>
 {% include "footer.html" %}
-{% endblock %}

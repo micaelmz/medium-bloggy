@@ -346,7 +346,11 @@ SECRET_KEY : <your_secret_key>
 
 ### Media
 
-- Images:
+- Pictures used on this site were obtained from [Unsplash](https://unsplash.com/). 
+  Credit goes to the following photographers: 
+  [Alex Block](https://unsplash.com/photos/oH34atgXJsQ), 
+  [Rohit Tandon](https://unsplash.com/photos/9wg5jCEPBsw), 
+  [KiwiHug](https://unsplash.com/photos/MS9Tnh3if1o)
 
 <br/>
 
