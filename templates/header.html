@@ -31,7 +31,9 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
         <div class="container">
-            <a class="navbar-brand mb-0 h1" href="{{url_for('get_all_posts')}}"><img src="/static/img/logo.png" width="80" height="60" alt="" loading="lazy"></a>
+            <a class="navbar-brand mb-0 h1" href="{{url_for('get_all_posts')}}"><img src="/static/img/logo.png"
+                                                                                     width="80" height="60" alt=""
+                                                                                     loading="lazy"></a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                     aria-label="Toggle navigation"><i class="fas fa-bars"></i>
@@ -48,6 +50,10 @@
                     </form>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('login') }}">Sign In</a>
+                        <span class="sr-only">(current)</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('register') }}">Get Started</a>
                         <span class="sr-only">(current)</span>
                     </li>
                     {% else: %}

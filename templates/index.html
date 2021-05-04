@@ -12,28 +12,29 @@
         </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                {% for post in all_posts %}
-                <div class="post-preview mb-5">
-                    <a href="{{ url_for('show_post', post_id=post._id) }}">
-                        <h3>
-                            <img src="{{ post.img_url }}" class="img-thumbnail xsmall-image">
-                            {{post.title}}
-                        </h3>
-                        <h5 class="post-subtitle">
-                            {{post.subtitle}}
-                        </h5>
-                    </a>
-                    <p class="post-meta">{{post.date}} · {{post.author}} </p>
+    <!--Post Card Content-->
+    <div class="row">
+        <div class="container">
+            {% for post in all_posts %}
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{ post.img_url }}" class="card-img" alt="blog post image">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <a href="{{ url_for('show_post', post_id=post._id) }}">
+                                <h5 class="card-title">{{post.title}}</h5>
+                                <p class="card-text">{{ post.subtitle }}</p>
+                            </a>
+                            <p class="card-text"><small class="text-muted">{{post.date}} posted by
+                                {{post.author}}</small></p>
+                        </div>
+                    </div>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
         </div>
     </div>
 </main>
-<hr>
-
 {% include "footer.html" %}

@@ -105,6 +105,7 @@ In keeping with the *printed newspaper* theme, minimalist colors are employed.
 
 - ![#212529](https://via.placeholder.com/15/212529/000000?text=+) `#212529` body text and background
 - ![#868e96](https://via.placeholder.com/15/868e96/000000?text=+) `#868e96` block quotes
+- ![#ffa500](https://via.placeholder.com/15/ffa500/000000?text=+) `#ffa500` main page jumbotron
 - ![#0085A1](https://via.placeholder.com/15/0085A1/000000?text=+) `#0085A1` hover
 
 <br/>
@@ -351,6 +352,8 @@ SECRET_KEY : <your_secret_key>
   [Alex Block](https://unsplash.com/photos/oH34atgXJsQ), 
   [Rohit Tandon](https://unsplash.com/photos/9wg5jCEPBsw), 
   [KiwiHug](https://unsplash.com/photos/MS9Tnh3if1o)
+  
+- [Logomakr](https://logomakr.com/) was used to create the site logo. 
 
 <br/>
 
