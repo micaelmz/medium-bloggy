@@ -12,26 +12,24 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <form class="d-flex" action="{{ url_for('search') }}" method="POST">
-                    <input class="form-control-lg me-2" type="search" name="query" placeholder="Search by post title..."
-                           aria-label="Search">
-                    <button class="btn btn-dark btn-sm ml-1" type="submit">Search</button>
-                    <a class="btn btn-outline-info ml-2" href="{{ url_for('get_all_posts') }}" role="button">Reset</a>
-                </form>
+<!--                <form class="d-flex mb-5" action="{{ url_for('search') }}" method="POST">-->
+<!--                    <input class="form-control-lg me-2" type="search" name="query" placeholder="Search by post title..."-->
+<!--                           aria-label="Search">-->
+<!--                    <button class="btn btn-dark btn-sm ml-1" type="submit">Search</button>-->
+<!--                    <a class="btn btn-outline-info ml-2" href="{{ url_for('get_all_posts') }}" role="button">Reset</a>-->
+<!--                </form>-->
                 {% for post in all_posts %}
-                <div class="post-preview">
+                <div class="post-preview mb-5">
                     <a href="{{ url_for('show_post', post_id=post._id) }}">
-                        <h2 class="post-title">
+                        <h3>
+                            <img src="{{ post.img_url }}" class="img-thumbnail xsmall-image">
                             {{post.title}}
-                        </h2>
-                        <h3 class="post-subtitle">
-                            {{post.subtitle}}
                         </h3>
+                        <h5 class="post-subtitle">
+                            {{post.subtitle}}
+                        </h5>
                     </a>
-                    <p class="post-meta">Posted by
-                        {{post.author}}
-                        on {{post.date}}
-                    </p>
+                    <p class="post-meta">{{post.date}} · {{post.author}} </p>
                 </div>
                 {% endfor %}
             </div>
