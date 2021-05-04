@@ -25,31 +25,36 @@ body {
   font-family: 'Lora', 'Times New Roman', serif;
 }
 
-.jumbotron {
+.main-jumbotron {
+  background-image: url("/static/img/background.jpg");
   background-size: cover;
   min-height: 450px;
 }
 
-.main-jumbotron {
-  background-image: url("/static/img/background.jpg");
-}
-
 .login-jumbotron {
   background: url("/static/img/login.jpg") no-repeat center center;
+  background-size: cover;
+  min-height: 450px;
 }
 
 .signup-jumbotron {
   background: url("/static/img/signup.jpg") no-repeat center center;
+  background-size: cover;
+  min-height: 450px;
 }
 
 .profile-jumbotron {
   background: url("/static/img/signup.jpg") no-repeat center center;
+  background-size: cover;
   max-height: 300px;
 }
 
 .write-jumbotron {
   background: url("/static/img/create.jpg") no-repeat center center;
+  background-size: cover;
+  min-height: 450px;
 }
+
 
 p {
   line-height: 1.5;
