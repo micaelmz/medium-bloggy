@@ -69,11 +69,6 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
 
 ## [JSHint](https://jshint.com/)
 
-- File: [.js](assets/js/asteroid.js)
-
-![asteroid.js JSHint](assets/testing/results/jshint-asteroid-testing.PNG)
-
-**Result:** [No Errors](assets/testing/results/jshint-asteroid-testing.PNG)
 
 <br/>
 
@@ -115,7 +110,7 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
 
 ----------
 
-## Automated Testing
+## Manual Testing
 
 ###
 
@@ -148,9 +143,7 @@ Further automated testing was performed using [Chrome Dev Tools - Lighthouse](ht
 
 
 **Recommendations:** Performance improvements are recommended in the following areas:
-- **Enable text compression:** in order to help the page load faster by up to 1.05s, it is recommended to compress the .js and .css files. It is also recommended to minify the .js to reduce payload sizes by up to 0.45s.
-- **Remove invisible text:** there is a flash of invisible text (FOIT) while the *game.html* page waits on Font-Awesome to load. The game-pad controller briefly displays blank text for the up, left, and right button icons.
-- **Use passive listeners to improve scrolling performance:** the browser does not know if the event listeners on *game.html* will prevent scrolling, so it waits for the listener to finish executing before scrolling the page. The recommendation is to add a `passive` flag to every event listener e.g.
+
 
 **Conclusion:** As the project is sitting at 99% performance on Desktop, and 95% on Mobile, the suggestions are taken under advisement, but are not implemented at this point in time.
 
@@ -203,7 +196,7 @@ Further automated testing was performed using [Chrome Dev Tools - Lighthouse](ht
 
 Using GitHub Projects, **a full list of closed bugs can be found [here](https://github.com/leithdm/medium-bloggy/issues)**. In this section we will highlight some of the more interesting ones.
 
-## 1. [Bug: xxx #55](https://github.com/leithdm/milestone-project-2/issues/55)
+## 1. [Bug: xxx](https://github.com/leithdm/milestone-project-2/issues/55)
 
 
 [Go back to README.md file](README.md).
