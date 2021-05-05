@@ -74,10 +74,10 @@ def login():
         existing_user = mongo.db.users.find_one({"email": email})
         # Email doesn't exist or password incorrect.
         if not existing_user:
-            flash("That email does not exist, please try again.")
+            flash("That email or password does not exist, please try again.")
             return redirect(url_for('login'))
         elif not check_password_hash(existing_user["password"], password):
-            flash('Password incorrect, please try again.')
+            flash('That email and password dont match, please try again.')
             return redirect(url_for('login'))
         else:
             session["user"] = existing_user['name']
@@ -128,21 +128,23 @@ def show_post(post_id):
 
 @app.route("/create-post", methods=["GET", "POST"])
 def create_post():
-    form = CreatePostForm()
-    if form.validate_on_submit():
-        new_post = {
-            "title": form.title.data,
-            "subtitle": form.subtitle.data,
-            "body": form.body.data,
-            "img_url": form.img_url.data,
-            "author": session["user"],
-            "date": date.today().strftime("%B %d, %Y")
-        }
-        mongo.db.blog_posts.insert_one(new_post)
-        flash("Post Successfully Added")
-        return redirect(url_for("get_all_posts"))
-
-    return render_template("create_post.html", form=form)
+    if "user" in session:
+        form = CreatePostForm()
+        if form.validate_on_submit():
+            new_post = {
+                "title": form.title.data,
+                "subtitle": form.subtitle.data,
+                "body": form.body.data,
+                "img_url": form.img_url.data,
+                "author": session["user"],
+                "date": date.today().strftime("%B %d, %Y")
+            }
+            mongo.db.blog_posts.insert_one(new_post)
+            flash("Post Successfully Added")
+            return redirect(url_for("get_all_posts"))
+        return render_template("create_post.html", form=form)
+    else:
+        return redirect(url_for("login"))
 
 
 @app.route("/edit-post/<post_id>", methods=["GET", "POST"])
@@ -186,6 +188,11 @@ def search():
     query = request.form.get("query")
     posts = list(mongo.db.blog_posts.find({"$text": {"$search": query}}))
     return render_template("index.html", all_posts=posts)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
 
 
 if __name__ == "__main__":

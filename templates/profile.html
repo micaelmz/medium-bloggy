@@ -37,7 +37,9 @@
                 <tr class="table-text">
                     <td>{{ loop.index }}.</td>
                     <td><img src="{{ post.img_url }}" class="img-thumbnail small-image"></td>
-                    <td>{{ post.title }}</td>
+
+                    <td><a href="{{ url_for('show_post', post_id=post._id) }}">{{ post.title }}</a></td>
+
                     <td>{{ post.date }}</td>
                     <td><a class="btn btn-outline-secondary float-left"
                            href="{{ url_for('edit_post', post_id=post._id) }}">Edit Post
