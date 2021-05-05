@@ -27,7 +27,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def get_all_posts():
-    posts = mongo.db.blog_posts.find()
+    posts = list(mongo.db.blog_posts.find())
     return render_template("index.html", all_posts=posts)
 
 
