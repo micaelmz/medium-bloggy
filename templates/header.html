@@ -43,8 +43,8 @@
                     <form class="form-inline my-2 my-lg-0" action="{{ url_for('search') }}" method="POST">
                         <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search all posts..."
                                aria-label="Search">
-                        <button class="btn btn-dark btn-sm ml-1" type="submit">Search</button>
-                        <a class="btn btn-outline-info ml-2" href="{{ url_for('get_all_posts') }}"
+                        <button class="btn btn-dark ml-1" type="submit">Search</button>
+                        <a class="btn btn-outline-info ml-1" href="{{ url_for('get_all_posts') }}"
                            role="button">Reset</a>
                     </form>
                     {% if not session.user %}

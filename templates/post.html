@@ -26,8 +26,32 @@
                 <hr>
                 {% if session.user == post.author %}
                 <div class="clearfix mb-5">
-                    <a class="btn btn-outline-danger float-right"
-                       href="{{ url_for('delete_post', post_id=post._id) }}">Delete Post</a>
+                    <button type="button" class="btn btn-outline-danger float-right" data-toggle="modal"
+                            data-target="#delete{{ post._id }}">
+                        Delete Post
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="delete{{ post._id }}" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to
+                                        delete this post?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                    </button>
+                                    <a class="btn btn-outline-danger btn-sm"
+                                       href="{{ url_for('delete_post', post_id=post._id) }}">Delete Post
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <a class="btn btn-outline-secondary float-left"
                        href="{{ url_for('edit_post', post_id=post._id) }}">Edit Post</a>
                 </div>
@@ -48,11 +72,39 @@
                             </div>
                             <div class="commentText">
                                 {{comment.text|safe}}
-                                <span class="date sub-text">{{comment.comment_author}}</span>
+                                <span class="date sub-text">Posted by {{comment.comment_author}}</span>
                                 {% if session.user == comment.comment_author %}
-                                <a class="btn btn-outline-danger"
-                                   href="{{ url_for('delete_comment', comment_id=comment._id, post_id=post._id) }}">Delete
-                                    Post</a>
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                        data-target="#deletecomment{{ post._id }}">
+                                    Delete Comment
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="deletecomment{{ post._id }}" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampModalLongTitle">Are you sure you want
+                                                    to
+                                                    delete this comment?</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <a class="btn btn-outline-danger"
+                                                   href="{{ url_for('delete_comment', comment_id=comment._id, post_id=post._id) }}">Delete
+                                                    Comment
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 {% endif %}
                             </div>
                         </li>
