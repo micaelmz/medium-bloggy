@@ -13,6 +13,11 @@
   color: red;
 }
 
+.signup-text {
+  font-weight: lighter;
+  font-size: 1rem;
+}
+
 .table-text {
   font-size: 1rem;
 }
