@@ -1,6 +1,6 @@
 {% include "header.html" %}
 <main role="main">
-    <div class="jumbotron jumbotron-fluid main-jumbotron">
+    <div class="jumbotron main-jumbotron">
         <div class="container">
             <h1 class="display-2">Where good ideas find you.</h1>
             <hr class="my-4">
@@ -13,7 +13,7 @@
     </div>
 
     <!--Post Card Content-->
-    <div class="row">
+    <div class="row card-margin">
         <div class="container">
             {% if all_posts|length > 0 %}
             {% for post in all_posts %}

@@ -5,4 +5,15 @@ env.py
 __pycache__/
 *.py[cod]
 .vscode
-venv
+build/
+.env/
+.venv/
+ENV/
+env/
+env*
+venv/
+venv*
+.idea/
+.flaskenv
+.env
+.DS_Store

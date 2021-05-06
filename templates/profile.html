@@ -4,7 +4,7 @@
 <main role="main">
     <div class="jumbotron jumbotron-fluid profile-jumbotron mb-5">
         <div class="text-center">
-            <h3>{{ username.capitalize() }}'s Profile Page</h3>
+            <h3 class="profile-name">{{ username.capitalize() }}'s Profile Page</h3>
         </div>
     </div>
 
@@ -21,11 +21,11 @@
                 {% endwith %}
             </div>
         </div>
-        <h2>Your Posts</h2>
+        <h2 class="your-posts-header">Your Posts</h2>
         <div class="table-responsive">
             <table class="table table-striped table-sm">
                 <thead>
-                <tr>
+                <tr class="table-row">
                     <th>#</th>
                     <th>Image</th>
                     <th>Title</th>

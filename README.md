@@ -32,17 +32,22 @@
 
 ## Overview
 
-Medium Bloggy is a site for amateur bloggers and writers to show-case their work. You can view the deployed site [here](http://mediumbloggy.herokuapp.com/). 
-The title of this site i.e *'Medium Bloggy'* is a homage to the [Medium.com](https://medium.com/) website, upon which this site is loosely based. 
-This site is an example of [social journalism](https://en.wikipedia.org/wiki/Social_journalism), which relies heavily on community involvement and engagement in order to create the content. 
+Medium Bloggy is a site for amateur bloggers and writers to show-case their work. You can view the deployed site 
+[here](http://mediumbloggy.herokuapp.com/). 
+The title of this site i.e *'Medium Bloggy'* is a homage to the [Medium.com](https://medium.com/) website, 
+upon which this site is loosely based. 
+This site is an example of [social journalism](https://en.wikipedia.org/wiki/Social_journalism), which relies heavily 
+on community involvement and engagement in order to create the content. 
 
 <br/>
 
 ## UX
 
-This project is part of the [Code Institute](https://codeinstitute.net/) Full Stack Software Development course, specifically **Module 3: Data Centric Development**. 
+This project is part of the [Code Institute](https://codeinstitute.net/) Full Stack Software Development course, 
+specifically **Module 3: Data Centric Development**. 
 
-The objective for this milestone project is to "*build a full-stack site that allows your users to manage a common dataset about a particular domain*".
+The objective for this milestone project is to "*build a full-stack site that allows your users to manage a common 
+dataset about a particular domain*".
 
 <br/>
 
@@ -88,14 +93,18 @@ The objective for this milestone project is to "*build a full-stack site that al
 
 ### Design
 
-- The overall concept was to emulate a *printed newspaper* by having a minimalist black and white color scheme, with a modern sans serif typography. 
+- The overall concept was to emulate a *printed newspaper* by having a minimalist black and white color scheme, with a 
+  modern sans serif typography. 
 
 <br/>
 
 #### Framework
 
-- [StartBootstrap](https://startbootstrap.com/) provide a free Bootstrap template called ['Clean-Blog'](https://startbootstrap.com/previews/clean-blog). This template was used to provide an initial style and coloring to the site. 
-- [Flask 1.1](https://flask.palletsprojects.com/en/1.1.x/) is a micro-framework that is used to render the back-end Python with front-end Bootstrap. 
+- [StartBootstrap](https://startbootstrap.com/) provide a free Bootstrap template called 
+  ['Clean-Blog'](https://startbootstrap.com/previews/clean-blog). This template was used to provide an initial style 
+  and coloring to the site. 
+- [Flask 1.1](https://flask.palletsprojects.com/en/1.1.x/) is a micro-framework that is used to render the back-end 
+  Python with front-end Bootstrap. 
 
 <br/>
 
@@ -126,7 +135,8 @@ In keeping with the *printed newspaper* theme, minimalist colors are employed.
 
 ### Wireframes
 
-- Wireframes were created using [Balsamiq Wireframes](https://balsamiq.com/) and can be viewed by clicking on links below.
+- Wireframes were created using [Balsamiq Wireframes](https://balsamiq.com/) and can be viewed by clicking on links 
+  below.
 
 <br/>
 
@@ -150,8 +160,11 @@ The database consists of x3 collections, which we can represent as follows:
 ## Features
 
 ### Existing Features
-  - **Register Account:** Anybody can register for free and create their own unique account. I have built-in authentication and authorization to check certain criteria is met before an account is validated. All passwords are hashed for security purposes.
-  - **Log In to Account:** For existing users, I have more authentication and authorization incorporated to check that the hashed passwords and username match the database.
+  - **Register Account:** Anybody can register for free and create their own unique account. I have built-in 
+    authentication and authorization to check certain criteria is met before an account is validated. All passwords 
+    are hashed for security purposes.
+  - **Log In to Account:** For existing users, I have more authentication and authorization incorporated to check 
+    that the hashed passwords and username match the database.
   - **Log Out of Account:** Users can easily log out of their account by clicking the logout button. 
   - **View All Posts:** On the *home* page, all blog posts are initially displayed, based on date of submission. 
   - **Search Posts:** The user can search for a relevant blog post, searched by Title. 
@@ -161,7 +174,9 @@ The database consists of x3 collections, which we can represent as follows:
 <br/>
 
 ### Future Features
-A full list of future features **can be viewed in the [Product Backlog](https://github.com/leithdm/milestone-project-3/projects/1)**, but we will briefly mention some of them here:
+A full list of future features **can be viewed in the 
+[Product Backlog](https://github.com/leithdm/milestone-project-3/projects/1)**, but we will briefly mention some 
+of them here:
 -  **Pagination:** the ability to paginate blog-post search results.
 -  **Bookmark:** the ability for a user to bookmark articles as part of a 'Reading List'.
 
@@ -189,8 +204,10 @@ A full list of future features **can be viewed in the [Product Backlog](https://
 
 #### Flask
 - [Flask 1.1](https://flask.palletsprojects.com/en/1.1.x/) - used as a web micro-framework. 
-- [Flask-WTF 0.14.3](https://flask-wtf.readthedocs.io/en/stable/) - for integrating Flask and [WTForms](https://wtforms.readthedocs.io/en/2.3.x/). 
-- [Flask-Bootstrap 3.3.7.1](https://pythonhosted.org/Flask-Bootstrap/) - packages Bootstrap into an easy to use extension.
+- [Flask-WTF 0.14.3](https://flask-wtf.readthedocs.io/en/stable/) - for integrating Flask and 
+  [WTForms](https://wtforms.readthedocs.io/en/2.3.x/). 
+- [Flask-Bootstrap 3.3.7.1](https://pythonhosted.org/Flask-Bootstrap/) - packages Bootstrap into an easy-to-use 
+  extension.
 - [Flask-CKEditor 0.4.4.1](https://pypi.org/project/Flask-CKEditor/) - CKEditor integration for Flask. 
 
 #### Heroku
@@ -207,13 +224,16 @@ A full list of future features **can be viewed in the [Product Backlog](https://
 
 ## Agile Project Management
 
-[GitHub Projects](https://github.com/features/project-management/) was used to iteratively sprint through the development of this app. Each *User Story* became an individual *Issue*, and was placed in a Kanban board composed of the following columns:
+[GitHub Projects](https://github.com/features/project-management/) was used to iteratively sprint through the 
+development of this app. Each *User Story* became an individual *Issue*, and was placed in a Kanban board composed of 
+the following columns:
 1. **Backlog** - all user stories, ordered by value/priority.
 2. **Sprint** - a subset of user stories to be completed in a x1 week sprint.
 3. **In Progress** - user stories currently being worked on from current sprint.
 4. **Done** - user stories completed, and tested.
 
-Along with tracking user stories, Github Projects was also used to track bugs. **The full list of user stories/bugs can be viewed [here](https://github.com/leithdm/medium-bloggy/projects/2).**
+Along with tracking user stories, Github Projects was also used to track bugs. **The full list of user stories/bugs 
+can be viewed [here](https://github.com/leithdm/medium-bloggy/projects/2).**
 
 ![GitHub Projects in action](wireframes/agile-project-management.PNG)
 
@@ -243,7 +263,8 @@ In order to run this project locally on your own system, you will need the follo
 
 Next, there's a series of steps to take in order to proceed with local deployment:
 
-- Clone this GitHub repository by either clicking the green Clone or download button and downloading the project as a zip-file (remember to unzip it first), or by entering the following into the Git CLI terminal:
+- Clone this GitHub repository by either clicking the green Clone or download button and downloading the project as a 
+  zip-file (remember to unzip it first), or by entering the following into the Git CLI terminal:
 
 `git clone https://github.com/leithdm/medium-bloggy.git`
 
@@ -274,7 +295,8 @@ os.environ.setdefault("PORT", "YOUR_PORT")
 
 `sudo -H pip3 -r requirements.txt`
 
-- Sign up for a free account on [MongoDB](https://www.mongodb.com/) and create a new Database called `blog`. The Collections in that database should be as follows:
+- Sign up for a free account on [MongoDB](https://www.mongodb.com/) and create a new Database called `blog`. 
+  The Collections in that database should be as follows:
 
 **blog_comments**
 
@@ -316,9 +338,11 @@ name: <string>
 
 **Remote Deployment:**
 
-This site is currently deployed on Heroku using the master branch on GitHub. To implement this project on Heroku, the following steps were taken:
+This site is currently deployed on Heroku using the master branch on GitHub. To implement this project on Heroku, 
+the following steps were taken:
 
-1. Create a **requirements.txt** file so [Heroku](https://www.heroku.com/) can install the required dependencies to run the app.
+1. Create a **requirements.txt** file so [Heroku](https://www.heroku.com/) can install the required dependencies to run 
+   the app.
 
 `sudo pip3 freeze --local > requirements.txt`
 
@@ -326,9 +350,11 @@ This site is currently deployed on Heroku using the master branch on GitHub. To 
 
 `echo web: python run.py > Procfile`
 
-3. Sign up for a free Heroku account, create your project app, and click the **Deploy** tab, at which point you can *Connect GitHub* as the Deployment Method, and select *Enable Automatic Deployment*.
+3. Sign up for a free Heroku account, create your project app, and click the **Deploy** tab, at which point you can 
+   *Connect GitHub* as the Deployment Method, and select *Enable Automatic Deployment*.
 
-4. In the Heroku **Settings** tab, click on the *Reveal Config Vars* button to configure environmental variables as follows:
+4. In the Heroku **Settings** tab, click on the *Reveal Config Vars* button to configure environmental variables 
+   as follows:
 
 ```
 IP : 0.0.0.0
@@ -359,4 +385,5 @@ SECRET_KEY : <your_secret_key>
 
 ### Acknowledgments
 
-- [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/?originalSubdomain=ng) - for his mentorship and guidance.
+- [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/?originalSubdomain=ng) - for his mentorship 
+  and guidance.

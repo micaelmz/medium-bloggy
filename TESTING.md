@@ -36,7 +36,8 @@
 
 <br/>
 
-**Result:** the W3C Validator for HTML does not understand the Jinja templating syntax, therefore shows repeat Errors. See sample output below for `index.html`. 
+**Result:** the W3C Validator for HTML does not understand the Jinja templating syntax, therefore shows repeat Errors. 
+See sample output below for `index.html`. 
 Aside from the Jinja warnings and errors, all other code is valid for each of the .html pages listed above. 
 
 ![Home Page HTML Validator](static/testing/index.html-testing.PNG)
@@ -78,7 +79,8 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
 
 ## Manual Testing
 
-- Browser compatability: To ensure a broad range of users can successfully use this site, it was manually tested across the 6 major browsers:
+- Browser compatability: To ensure a broad range of users can successfully use this site, it was manually tested across 
+  the 6 major browsers:
 
   - Chrome v.87
   - Edge v.85
@@ -86,25 +88,26 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
   - Safari v.12
   - Opera v.71
   - Internet Explorer v.6-11 (tested via [BrowserStack](https://www.browserstack.com/test-in-internet-explorer)).
+  
 
-<br/>
+- Site responsiveness was tested using [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) using 
+  profiles for a wide variety of devices.
 
-- Site responsiveness was tested using [Chrome DevTools](https://developers.google.com/web/tools/chrome-devtools) using profiles for a wide variety of devices.
-
-<br/>
 
 - Physical Devices tested included:
   - iPhone 5 (iOS: 12.4.9)
   - iPhone 6 (iOS: 12.4.9)
   - Samsung Galaxy A10 (Model SM-A105FN, Build/QP1A, on Android 10)
   - MacBook Pro (Retina, 13", Late 2013, OS Catalina)
-  - Apple iMac 27" (running Windows 10 Pro ver. 2004, OS 19041.630)
+  - Apple iMac 27" (also running Windows 10 Pro ver. 2004, OS 19041.630)
 
 <br/>
 
-**Result:** Both browser compatability and site responsiveness testing can be summarised in the table below. Responsiveness was good on all of the devices listed, both physical and simulated. Brower compatability was good across all the major browsers, except for Internet Explorer 6-11.
+**Result:** Both browser compatability and site responsiveness testing can be summarised in the table below. 
+Responsiveness was good on all of the devices listed, both physical and simulated. Brower compatability was good across 
+all the major browsers, except for Internet Explorer 6-11.
 
-![Responsive Design](assets/testing/results/responsiveness.PNG)
+![Responsive Design](static/testing/responsiveness.PNG)
 
 <br/>
 
@@ -112,11 +115,17 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
 
 ## Manual Testing
 
-###
+I created a comprehensive manual Testing Document which can be viewed 
+as a PDF **[here](static/testing/manual-testing-procedure.pdf).**
 
-![Spec Results](assets/testing/results/jasmine-testing.PNG)
+**Overview of Testing Procedure:**
+1. Testing Account Creation and Log in.
+2. Testing Create, Read, Update, Delete of Blog Posts.
+3. Testing Create, Read, Delete of Blog Post Comments.
+4. Testing 404, 403, 500 Errors.
+5. Testing URL Protection.
 
-**Result:**
+**Result:** Site performed as expected. Please see the Testing Document referenced above. 
 
 <br/>
 
@@ -124,15 +133,19 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
 
 ### Chrome Dev Tools - Lighthouse
 
-Further automated testing was performed using [Chrome Dev Tools - Lighthouse](https://developers.google.com/web/tools/lighthouse). Lighthouse is an open-source, automated tool for improving the quality of web pages. It performs audits under the following headers:
+Automated testing was performed using [Chrome Dev Tools - Lighthouse](https://developers.google.com/web/tools/lighthouse). 
+Lighthouse is an open-source, automated tool for improving the quality of web pages. It performs audits under 
+the following headers:
 1. Performance
 2. Accessibility
 3. Best Practices
 4. SEO
 
-**Result:** see summary results below for **Desktop *index.html***
+**Result:** see summary results below for **Desktop *index.html***. 
+- For *Best Practices* x5 insecure requests were found as the site does not use HTTPs. As that is not within the remit
+of this project, these warnings were ignored. 
 
-![Desktop](assets/testing/results/lighthouse-desktop.PNG)
+![Desktop](static/testing/lighthouse-desktop.png)
 
 
 <br/>
@@ -145,7 +158,8 @@ Further automated testing was performed using [Chrome Dev Tools - Lighthouse](ht
 **Recommendations:** Performance improvements are recommended in the following areas:
 
 
-**Conclusion:** As the project is sitting at 99% performance on Desktop, and 95% on Mobile, the suggestions are taken under advisement, but are not implemented at this point in time.
+**Conclusion:** As the project is sitting at 99% performance on Desktop, and 95% on Mobile, the suggestions are 
+taken under advisement, but are not implemented at this point in time.
 
 <br/>
 
@@ -154,7 +168,8 @@ Further automated testing was performed using [Chrome Dev Tools - Lighthouse](ht
 # User Stories
 
 
-**Result:** All user stories have been successfully implemented, with a :white_check_mark: to denote items that have been implemented in this game.
+**Result:** All user stories have been successfully implemented, with a :white_check_mark: to denote items that 
+have been implemented in this game.
 
 <br/>
 
@@ -194,7 +209,9 @@ Further automated testing was performed using [Chrome Dev Tools - Lighthouse](ht
 
 # Bugs
 
-Using GitHub Projects, **a full list of closed bugs can be found [here](https://github.com/leithdm/medium-bloggy/issues)**. In this section we will highlight some of the more interesting ones.
+Using GitHub Projects, **a full list of closed bugs can be found 
+[here](https://github.com/leithdm/medium-bloggy/issues)**. In this section we will highlight some of the more 
+interesting ones.
 
 ## 1. [Bug: xxx](https://github.com/leithdm/milestone-project-2/issues/55)
 
