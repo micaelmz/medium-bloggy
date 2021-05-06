@@ -57,10 +57,10 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
 
 ![CSS Validator](static/testing/css-testing.PNG)
 
-**Result:** No Errors, 10 warnings.
+**Result:** No Errors, 6 warnings.
 
 
-![CSS Validator](static/testing/css-warnings-testing.PNG)
+![CSS Validator](static/testing/css-warnings-testing.png)
 
 <br/>
 
@@ -68,14 +68,30 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
 
 # JavaScript
 
-## [JSHint](https://jshint.com/)
+I was able to leverage Bootstrap to provide most of the JavaScript functionality on this site. 
+The following code was added to `footer.html` in order to print the current year for Copyright purposes. 
+
+`<script>document.write(new Date().getFullYear());</script>`
+
+**Result:** This code passed through [JSHint](https://jshint.com/) without any errors. 
 
 
 <br/>
 
 ----------
 
-# Compatability
+# Python
+
+[PEP8 Online](http://pep8online.com/)
+
+**Result:** All .py files are PEP8 compliant. 
+
+
+<br/>
+
+----------
+
+# Compatability and Responsiveness
 
 ## Manual Testing
 
@@ -107,15 +123,15 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
 Responsiveness was good on all of the devices listed, both physical and simulated. Brower compatability was good across 
 all the major browsers, except for Internet Explorer 6-11.
 
-![Responsive Design](static/testing/responsiveness.PNG)
+![Responsive Design](static/testing/responsiveness.png)
 
 <br/>
 
 ----------
 
-## Manual Testing
+## Functionality, Usability, Data Management
 
-I created a comprehensive manual Testing Document which can be viewed 
+I created a comprehensive Testing Document to assess site functionality, usability and data management which can be viewed 
 as a PDF **[here](static/testing/manual-testing-procedure.pdf).**
 
 **Overview of Testing Procedure:**
@@ -124,6 +140,7 @@ as a PDF **[here](static/testing/manual-testing-procedure.pdf).**
 3. Testing Create, Read, Delete of Blog Post Comments.
 4. Testing 404, 403, 500 Errors.
 5. Testing URL Protection.
+6. Testing Search Functionality. 
 
 **Result:** Site performed as expected. Please see the Testing Document referenced above. 
 
@@ -150,10 +167,6 @@ of this project, these warnings were ignored.
 
 <br/>
 
-**Result:** see summary results below for **Mobile *index.html***
-
-![Mobile](assets/testing/results/lighthouse-mobile.PNG)
-
 
 **Recommendations:** Performance improvements are recommended in the following areas:
 
@@ -168,8 +181,8 @@ taken under advisement, but are not implemented at this point in time.
 # User Stories
 
 
-**Result:** All user stories have been successfully implemented, with a :white_check_mark: to denote items that 
-have been implemented in this game.
+**Result:** The majority of user stories have been successfully implemented, with a :white_check_mark: to denote items that 
+have been implemented. User stories related to an adminstrator account have been pushed into a later sprint. 
 
 <br/>
 
@@ -179,31 +192,23 @@ have been implemented in this game.
 - :white_check_mark: should be presented with blog article on the main page.
 - :white_check_mark: should be able to click on an article on the main page to read more about it.
 - :white_check_mark: should be able to search through articles.
-- :white_check_mark: should be able to click on the author of the blog to find out more details about them.
+- :white_check_mark: should be able to register an account with the site in order to publish articles, and 
+  comment on them.
 
 <br/>
 
 "**__As a *registered user*, I__** ______________________________________________"
 
-- :white_check_mark: should be able to register an account with the site in order to publish articles.
-- :white_check_mark: should be able to create a blogger portfolio page, with relevant details.
-- :white_check_mark: should be able to CRUD my portfolio page.
-- :white_check_mark: should be able to CRUD articles from my portfolio.
-- :white_check_mark: should be able to see how many views my articles have received.
-- :white_check_mark: should be able to see how many likes my articles have received.
-- :white_check_mark: should be able to reply to any comments written about my articles.
-- :white_check_mark: should be able to make comments on other blog articles.
+- :white_check_mark: should be able to login to the site in order to publish articles.
+- :white_check_mark: should be presented with a profile page showing all of my posts.
+- :white_check_mark: should be able to update and delete posts from my profile page.
+- :white_check_mark: should be able to create comments on any other posts.
+- :white_check_mark: should be able to delete comments that I have made.
+- :white_check_mark: should be able to logout of my account.
+
 
 <br/>
 
-"**__As an *administrator*, I__** ______________________________________________"
-
-- :white_check_mark: should be able to see an administrator dashboard page.
-- :white_check_mark: should be able to see a list of all blog posts, with relevant details.
-- :white_check_mark: should be able to see a list of all blog authors, with relevant details.
-- :white_check_mark: should be able to delete blog posts.
-
-<br/>
 
 ----------
 
@@ -213,8 +218,17 @@ Using GitHub Projects, **a full list of closed bugs can be found
 [here](https://github.com/leithdm/medium-bloggy/issues)**. In this section we will highlight some of the more 
 interesting ones.
 
-## 1. [Bug: xxx](https://github.com/leithdm/milestone-project-2/issues/55)
+## 1. Bug: [CKEDITOR: editor-incorrect-element.](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_errors.html#editor-incorrect-element)
+![Bug](static/testing/bug.png)
 
+- This bug was noticed in the console. The bug occurs whenever navigating to a page that includes a CKEditor Form. 
+- It is worth noting that the CKEditor form(s) work fine, and are fully operational, despite the error. 
+- On further investigation it became apparent that the requested elements **id** could not be found in the page’s DOM.
+- One suggestion from the CKEditor docs was check if the passed argument points to the correct element. 
+  I confirmed that it was. 
+- Another suggested solution from [stackoverflow](https://stackoverflow.com/questions/62426969/ckeditor-4-not-working-due-to-error-editor-incorrect-element)
+was to create a *dummy* `textarea` element and then initialize the editor after the declaration of the `textarea` element.
+- Investigation is still ongoing.   
 
 [Go back to README.md file](README.md).
 

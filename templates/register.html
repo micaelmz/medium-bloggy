@@ -2,21 +2,20 @@
 {% include "header.html" %}
 
 <main role="main">
-    <div class="jumbotron jumbotron-fluid signup-jumbotron">
-        <div class="container text-center">
-            <h1 class="register">Join Us</h1>
-            <p>We can't wait to see what you will create.</p>
-        </div>
-    </div>
-
-  <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-       {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+   <div class="jumbotron jumbotron-fluid signup-jumbotron">
+      <div class="container text-center">
+         <h1 class="register">Join Us</h1>
+         <p>We can't wait to see what you will create.</p>
       </div>
-    </div>
-  </div>
+   </div>
+   <!-- MAIN CONTENT -->
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 col-md-10 mx-auto">
+            {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+         </div>
+      </div>
+   </div>
 </main>
 <br>
 <hr>

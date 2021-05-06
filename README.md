@@ -53,41 +53,29 @@ dataset about a particular domain*".
 
 ### User Stories
 
-- User Stories were written from the perspective of x3 different user(s):
+- User Stories were written from the perspective of x2 different user(s):
     - the non-registered user that wants to read blog articles, without contributing content. 
     - the registered user that wants to write blog articles or comment on other articles.
-    - the site administrator.
 
 <br/>
 
 "**__As a *non-registered user*, I__** ______________________________________________"
 
-- should be presented with blog article on the main page. 
+- should be presented with blog articles on the main page. 
 - should be able to click on an article on the main page to read more about it. 
-- should be able to search through articles. 
-- should be able to click on the author of the blog to find out more details about them.
+- should be able to search through articles.
+- should be able to register an account with the site in order to publish articles, and comment on them. 
 
 <br/>
 
 "**__As a *registered user*, I__** ______________________________________________"
 
-- should be able to register an account with the site in order to publish articles. 
-- should be able to create a blogger portfolio page, with relevant details. 
-- should be able to CRUD my portfolio page. 
-- should be able to CRUD articles from my portfolio. 
-- should be able to see how many views my articles have received. 
-- should be able to see how many likes my articles have received.
-- should be able to reply to any comments written about my articles.
-- should be able to make comments on other blog articles. 
-
-<br/>
-
-"**__As an *administrator*, I__** ______________________________________________"
-
-- should be able to see an administrator dashboard page. 
-- should be able to see a list of all blog posts, with relevant details. 
-- should be able to see a list of all blog authors, with relevant details.
-- should be able to delete blog posts. 
+- should be able to login to the site in order to publish articles. 
+- should be presented with a profile page showing all of my posts. 
+- should be able to update and delete posts from my profile page.
+- should be able to create comments on any other posts.   
+- should be able to delete comments that I have made.
+- should be able to logout of my account. 
 
 <br/>
 
@@ -166,10 +154,10 @@ The database consists of x3 collections, which we can represent as follows:
   - **Log In to Account:** For existing users, I have more authentication and authorization incorporated to check 
     that the hashed passwords and username match the database.
   - **Log Out of Account:** Users can easily log out of their account by clicking the logout button. 
-  - **View All Posts:** On the *home* page, all blog posts are initially displayed, based on date of submission. 
-  - **Search Posts:** The user can search for a relevant blog post, searched by Title. 
+  - **View All Posts:** On the *index* page, all blog posts are initially displayed, based on date of submission. 
+  - **Search Posts:** The user can search for a relevant blog post, searched by Title or Subtitle. 
   - **CRUD Posts:** A registered user can create, read, update and delete their blog posts.
-  - **Administrator Superuser:** With ability to delete and blog post from database. 
+  - **CRD Comments:** A registered user can create, read, and delete comments made on any post.
 
 <br/>
 
@@ -179,7 +167,7 @@ A full list of future features **can be viewed in the
 of them here:
 -  **Pagination:** the ability to paginate blog-post search results.
 -  **Bookmark:** the ability for a user to bookmark articles as part of a 'Reading List'.
-
+-  **Administrator Dashboard:** the ability to login as an admin and have full oversight on content. 
 
 <br/>
 

@@ -1,32 +1,30 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% include "header.html" %}
-
 <main role="main">
-    <div class="jumbotron jumbotron-fluid login-jumbotron">
-        <div class="container text-center">
-            <h1 class="login">Sign In</h1>
-            <p>Welcome Back.</p>
-        </div>
-    </div>
+   <div class="jumbotron jumbotron-fluid login-jumbotron">
+      <div class="container text-center">
+         <h1 class="login">Sign In</h1>
+         <p>Welcome Back.</p>
+      </div>
+   </div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto content">
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                {% for message in messages %}
-                <p class="flash-warning">{{ message }}</p>
-                {% endfor %}
-                {% endif %}
-                {% endwith %}
-                {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
-                <p class="signup-text">Don't have an account?<a href="/register"> Get Started</a></p>
-            </div>
-        </div>
-    </div>
+   <!-- MAIN CONTENT -->
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 col-md-10 mx-auto content">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <p class="flash-warning">{{ message }}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            {{ wtf.quick_form(form, novalidate=True, button_map={"submit": "primary"}) }}
+            <p class="signup-text">Don't have an account?<a href="/register"> Get Started</a></p>
+         </div>
+      </div>
+   </div>
 </main>
 <br>
 <hr>
-
 {% include "footer.html" %}

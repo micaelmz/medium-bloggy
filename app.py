@@ -24,18 +24,30 @@ ckeditor = CKEditor(app)
 mongo = PyMongo(app)
 
 
+# ---------------- #
+#    APP ROUTES    #
+# ---------------- #
 
+# ----- HOME ----- #
 @app.route("/")
 def get_all_posts():
+    '''
+    Read all blog posts from the database.
+    '''
     posts = list(mongo.db.blog_posts.find())
     return render_template("index.html", all_posts=posts)
 
 
+# ----- REGISTER ----- #
 @app.route('/register', methods=["GET", "POST"])
 def register():
+    '''
+    Sign up for a new account.
+    '''
     form = RegisterForm()
     if form.validate_on_submit():
-        # check if username already exists in database
+
+        # check if email already exists in database
         existing_user = mongo.db.users.find_one(
             {"email": form.email.data})
 
@@ -43,6 +55,7 @@ def register():
             flash("You've already signed up with that email, log in instead!")
             return redirect(url_for('login'))
 
+        # hash and salt the password
         hash_and_salted_password = generate_password_hash(
             form.password.data,
             method='pbkdf2:sha256',
@@ -53,7 +66,7 @@ def register():
             "password": hash_and_salted_password,
             "name": form.name.data
         }
-        # insert user into database
+        # insert new_user into the database
         mongo.db.users.insert_one(new_user)
 
         # put the new user into 'session' cookie
@@ -63,16 +76,22 @@ def register():
     return render_template("register.html", form=form)
 
 
+# ----- LOGIN ----- #
 @app.route('/login', methods=["GET", "POST"])
 def login():
+    '''
+    Login to the site.
+
+    Validation included.
+    '''
     form = LoginForm()
     if form.validate_on_submit():
         email = form.email.data
         password = form.password.data
 
-        # check if username already exists
+        # check if email already exists
         existing_user = mongo.db.users.find_one({"email": email})
-        # Email doesn't exist or password incorrect.
+        # if email doesn't exist or password incorrect
         if not existing_user:
             flash("That email or password does not exist, please try again.")
             return redirect(url_for('login'))
@@ -87,11 +106,17 @@ def login():
     return render_template("login.html", form=form)
 
 
+# ----- PROFILE PAGE ----- #
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    '''
+    Direct the user to their Profile page.
+
+    Retrieve all the users Posts.
+    '''
     username = mongo.db.users.find_one(
         {"name": session["user"]})["name"]
-    posts = mongo.db.blog_posts.find({"author": username })
+    posts = mongo.db.blog_posts.find({"author": username})
     # if logged in
     if session["user"]:
         return render_template("profile.html", username=username, posts=posts)
@@ -99,18 +124,33 @@ def profile(username):
     return redirect(url_for("login"))
 
 
+# ----- LOGOUT ----- #
 @app.route("/logout")
 def logout():
+    '''
+    Logout the user.
+
+    Redirect the user to the home page.
+    '''
     session.pop("user")
     return redirect(url_for("get_all_posts"))
 
 
+# ----- READ A POST BY ITS ID ----- #
 @app.route("/post/<post_id>", methods=["GET", "POST"])
 def show_post(post_id):
-    form = CommentForm()
-    requested_post = mongo.db.blog_posts.find_one({"_id": ObjectId(post_id)})
-    requested_post_comments = mongo.db.blog_comments.find({"parent_post": ObjectId(post_id)})
+    '''
+    Read a Post by Id.
 
+    Allow the user to Comment if logged in.
+    '''
+    form = CommentForm()
+    # find the requested post
+    requested_post = mongo.db.blog_posts.find_one({"_id": ObjectId(post_id)})
+    requested_post_comments = mongo.db.blog_comments.find(
+        {"parent_post": ObjectId(post_id)})
+
+    # commenting on a post
     if form.validate_on_submit():
         if not session["user"]:
             flash("You need to login or register to comment.")
@@ -123,12 +163,20 @@ def show_post(post_id):
         }
 
         mongo.db.blog_comments.insert_one(new_comment)
-    return render_template("post.html", post=requested_post, comments=requested_post_comments, form=form)
+    return render_template("post.html", post=requested_post,
+                           comments=requested_post_comments, form=form)
 
 
+# ----- CREATE A NEW POST ----- #
 @app.route("/create-post", methods=["GET", "POST"])
 def create_post():
+    '''
+    Create a new Post.
+
+    Inject all form data to a new blog post document on submit.
+    '''
     if "user" in session:
+        # create a Form for data entry
         form = CreatePostForm()
         if form.validate_on_submit():
             new_post = {
@@ -147,8 +195,14 @@ def create_post():
         return redirect(url_for("login"))
 
 
+# ----- EDIT A POST BY ID ----- #
 @app.route("/edit-post/<post_id>", methods=["GET", "POST"])
 def edit_post(post_id):
+    '''
+    Edit a Post by Id.
+
+    Update all Post data on submit.
+    '''
     post = mongo.db.blog_posts.find_one({"_id": ObjectId(post_id)})
 
     edit_form = CreatePostForm(
@@ -168,38 +222,55 @@ def edit_post(post_id):
     return render_template("create_post.html", form=edit_form, is_edit=True)
 
 
+# ----- DELETE A POST BY ID ----- #
 @app.route("/delete/<post_id>")
 def delete_post(post_id):
+    '''
+    Delete a Post by Id.
+
+    Redirect back to main page on submit.
+    '''
     mongo.db.blog_posts.remove({"_id": ObjectId(post_id)})
     flash("Post Successfully Deleted")
     return redirect(url_for('get_all_posts'))
 
 
+# ----- DELETE A COMMENT BY ID ----- #
 @app.route("/delete_comment/<comment_id>")
 def delete_comment(comment_id):
+    '''
+    Delete a Comment by Id.
+    '''
     mongo.db.blog_comments.remove({"_id": ObjectId(comment_id)})
     flash("Comment Successfully Deleted")
     post_id = request.args.get('post_id')
     return redirect(url_for("show_post", post_id=post_id))
 
 
+# ----- SEARCH FOR A POST BY TITLE, SUBTITLE ----- #
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    '''
+    Search for a Post by Title, Subtitle.
+    '''
     query = request.form.get("query")
     posts = list(mongo.db.blog_posts.find({"$text": {"$search": query}}))
     return render_template("index.html", all_posts=posts)
 
 
+# ----- HANDLE 404 ERROR ----- #
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
 
+# ----- HANDLE 403 ERROR ----- #
 @app.errorhandler(403)
 def page_not_found(e):
     return render_template('403.html'), 403
 
 
+# ----- HANDLE 500 ERROR ----- #
 @app.errorhandler(500)
 def page_not_found(e):
     return render_template('500.html'), 500
@@ -209,5 +280,3 @@ if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
             debug=False)
-
-    # app.run(debug=True)

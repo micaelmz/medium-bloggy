@@ -1,68 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+   <head>
+      <!-- META TAGS -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="Blogging Ireland; journalism">
 
-<head>
-    <!-- META TAGS -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Blogging Ireland; journalism">
+       <!-- TITLE -->
+      <title>Medium Bloggy</title>
 
-    <!-- TITLE | FAVICON -->
-    <title>Medium Bloggy</title>
+       <!-- CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+         integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-          integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+       <!-- CUSTOM STYLE -->
+      <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
+   </head>
+   <body>
 
-    <!-- Custom styles for this template -->
-    <link href="{{ url_for('static', filename='css/style.css')}}" rel="stylesheet">
-</head>
-
-<body>
-<!-- Navigation -->
-<header>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-        <a class="navbar-brand mb-0 h1" href="{{url_for('get_all_posts')}}"><img src="/static/img/logo.png" alt=""
-                                                                                 loading="lazy"></a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-                aria-label="Toggle navigation"><i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <form class="form-inline my-2 my-lg-0" action="{{ url_for('search') }}" method="POST">
-                    <input class="form-control mr-sm-2 search-button-margin" type="search" name="query" placeholder="Search all posts..."
-                           aria-label="Search">
-                    <button class="btn btn-dark ml-1" type="submit">Search</button>
-                    <a class="btn btn-outline-info ml-1" href="{{ url_for('get_all_posts') }}"
-                       role="button">Reset</a>
-                </form>
-                {% if not session.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login') }}">Sign In</a>
-                    <span class="sr-only">(current)</span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('register') }}">Get Started</a>
-                    <span class="sr-only">(current)</span>
-                </li>
-                {% else: %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('create_post') }}">Write</a>
-                    <span class="sr-only">(current)</span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
-                    <span class="sr-only">(current)</span>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
-                    <span class="sr-only">(current)</span>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
-    </nav>
-</header>
+      <!-- NAVIGATION -->
+      <header>
+         <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+            <a class="navbar-brand mb-0 h1" href="{{url_for('get_all_posts')}}"><img src="/static/img/logo.png" alt=""
+               loading="lazy"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+               data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+               aria-label="Toggle navigation"><i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <form class="form-inline my-2 my-lg-0" action="{{ url_for('search') }}" method="POST">
+                     <input class="form-control mr-sm-2 search-button-margin" type="search" name="query" placeholder="Search all posts..."
+                        aria-label="Search">
+                     <button class="btn btn-dark ml-1" type="submit">Search</button>
+                     <a class="btn btn-outline-info ml-1" href="{{ url_for('get_all_posts') }}"
+                        role="button">Reset</a>
+                  </form>
+                  {% if not session.user %}
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('login') }}">Sign In</a>
+                     <span class="sr-only">(current)</span>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('register') }}">Get Started</a>
+                     <span class="sr-only">(current)</span>
+                  </li>
+                  {% else: %}
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('create_post') }}">Write</a>
+                     <span class="sr-only">(current)</span>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+                     <span class="sr-only">(current)</span>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                     <span class="sr-only">(current)</span>
+                  </li>
+                  {% endif %}
+               </ul>
+            </div>
+         </nav>
+      </header>
