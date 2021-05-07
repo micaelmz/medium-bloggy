@@ -60,7 +60,7 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
 **Result:** No Errors, 6 warnings.
 
 
-![CSS Warnings](static/testing/css-warnings-testing.png)
+![CSS Warnings](static/testing/css-warnings-testing.PNG)
 
 <br/>
 
