@@ -68,8 +68,15 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
 
 # JavaScript
 
+- File: [script.js](https://github.com/leithdm/medium-bloggy/blob/master/static/js/script.js)
+
+![Quote Generator](static/testing/jshint.png)
+
+
+**Result:** This code passed through [JSHint](https://jshint.com/) without any errors. 
+
 I was able to leverage Bootstrap to provide most of the JavaScript functionality on this site. 
-The following code was added to `footer.html` in order to print the current year for Copyright purposes. 
+However, the following code was also added to `footer.html` in order to print the current year for Copyright purposes. 
 
 `<script>document.write(new Date().getFullYear());</script>`
 
@@ -214,21 +221,16 @@ have been implemented. User stories related to an adminstrator account have been
 
 # Bugs
 
-Using GitHub Projects, **a full list of closed bugs can be found 
-[here](https://github.com/leithdm/medium-bloggy/issues)**. In this section we will highlight some of the more 
-interesting ones.
-
 ## 1. Bug: [CKEDITOR: editor-incorrect-element.](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_errors.html#editor-incorrect-element)
 ![Bug](static/testing/bug.png)
 
-- This bug was noticed in the console. The bug occurs whenever navigating to a page that includes a CKEditor Form. 
-- It is worth noting that the CKEditor form(s) work fine, and are fully operational, despite the error. 
-- On further investigation it became apparent that the requested elements **id** could not be found in the page’s DOM.
-- One suggestion from the CKEditor docs was check if the passed argument points to the correct element. 
-  I confirmed that it was. 
+- This bug was noticed in the console was navigating to a page that had a CKEditor Form element. 
+- It is worth noting that the CKEditor form works fine, and is fully operational, despite the error.
+- One suggestion from the CKEditor docs was to check if the passed argument points to the correct element. 
+  I confirmed that it was, and also tried renaming the variable.
 - Another suggested solution from [stackoverflow](https://stackoverflow.com/questions/62426969/ckeditor-4-not-working-due-to-error-editor-incorrect-element)
 was to create a *dummy* `textarea` element and then initialize the editor after the declaration of the `textarea` element.
-- Investigation is still ongoing.   
+- The bug did has not impacted functionality, but investigation is still ongoing.  
 
 [Go back to README.md file](README.md).
 

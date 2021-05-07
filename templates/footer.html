@@ -29,6 +29,11 @@
                   </a>
                </li>
             </ul>
+            <!-- Quote -->
+            <div class="quote-text text-center mt-5">
+            <i class="fas fa-quote-left"></i>
+            <span id="quote" class="quote-text"></span><span id="author" class="quote-author"></span>
+            </div>
             <p class="copyright text-muted">
                Copyright &copy; Medium Bloggy <script>document.write(new Date().getFullYear());</script>
             </p>
@@ -43,5 +48,7 @@
    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <!-- Custom script for random quote generation -->
+  <script src="{{ url_for('static', filename='js/script.js')}}"></script>
 </body>
 </html>

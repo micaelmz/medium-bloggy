@@ -86,11 +86,12 @@ dataset about a particular domain*".
 
 <br/>
 
-#### Framework
+#### Frameworks
 
 - [StartBootstrap](https://startbootstrap.com/) provide a free Bootstrap template called 
   ['Clean-Blog'](https://startbootstrap.com/previews/clean-blog). This template was used to provide an initial style 
-  and coloring to the site. 
+  and coloring to the site. By the end of the project practically all of the template code was replaced with my own 
+  custom code.
 - [Flask 1.1](https://flask.palletsprojects.com/en/1.1.x/) is a micro-framework that is used to render the back-end 
   Python with front-end Bootstrap. 
 
@@ -109,7 +110,8 @@ In keeping with the *printed newspaper* theme, minimalist colors are employed.
 
 #### Icons
 
-- [Font Awesome 5.6.1](https://fontawesome.com/) icons are used for the social media links. 
+- [Font Awesome 5.6.1](https://fontawesome.com/) icons are used for the social media links, and the quotes in the 
+footer.
 
 <br/>
 
@@ -156,8 +158,16 @@ The database consists of x3 collections, which we can represent as follows:
   - **Log Out of Account:** Users can easily log out of their account by clicking the logout button. 
   - **View All Posts:** On the *index* page, all blog posts are initially displayed, based on date of submission. 
   - **Search Posts:** The user can search for a relevant blog post, searched by Title or Subtitle. 
-  - **CRUD Posts:** A registered user can create, read, update and delete their blog posts.
-  - **CRD Comments:** A registered user can create, read, and delete comments made on any post.
+  - **CRUD Posts:** A registered user can create, read, update and delete their blog posts. By leveraging 
+    [Flask-CKEditor](https://flask-ckeditor.readthedocs.io/en/latest/) it made it possible for users to add rich
+    content to their blog posts like images, code syntax highlighting, etc. There are also lost of features in-built
+    into the editor including spell-checking, linking, table insertion, font-styling, etc. All of these features make
+    it intuitive for the user to create great blog posts. 
+  - **CRD Comments:** A registered user can create, read, and delete comments made on any post. Again, commenting
+    makes use of the CKEditor, allowing the user to create rich, well-presented content. 
+  - **Random Quote Generator:** As this is a blogging site, I thought it would be a nice feature for the user to see 
+    a random quote for further inspiration. The quote is located in the footer, and a fresh one is loaded on loading
+    the page. 
 
 <br/>
 
@@ -196,7 +206,7 @@ of them here:
   [WTForms](https://wtforms.readthedocs.io/en/2.3.x/). 
 - [Flask-Bootstrap 3.3.7.1](https://pythonhosted.org/Flask-Bootstrap/) - packages Bootstrap into an easy-to-use 
   extension.
-- [Flask-CKEditor 0.4.4.1](https://pypi.org/project/Flask-CKEditor/) - CKEditor integration for Flask. 
+- [Flask-CKEditor 0.4.4.1](https://flask-ckeditor.readthedocs.io/en/latest/) - CKEditor integration for Flask. 
 
 #### Heroku
 - [Heroku](https://www.heroku.com/) - to host the site.
