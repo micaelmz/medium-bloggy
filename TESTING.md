@@ -7,14 +7,14 @@
 - [CSS Validator](#css-validator)
   - [W3C CSS Validation Service](#w3c-css-validation-service)
 - [JavaScript](#javascript)
-  - [JSHint](#jshint)
-- [Compatability](#compatability)
+- [Python](#python)
+- [Compatability and Responsiveness](#compatability-and-responsiveness)
   - [Manual Testing](#manual-testing)
-  - [Automated Testing](#automated-testing)
+  - [Functionality, Usability, Data Management](#functionality-usability-data-management)
     - [Chrome Dev Tools - Lighthouse](#chrome-dev-tools---lighthouse)
 - [User Stories](#user-stories)
 - [Bugs](#bugs)
-  - [1. Bug: xxx #55](#1-bug-xxx-55)
+  - [1. Bug: CKEDITOR: editor-incorrect-element.](#1-bug-ckeditor-editor-incorrect-element)
 
 <br/>
 
@@ -60,7 +60,7 @@ Aside from the Jinja warnings and errors, all other code is valid for each of th
 **Result:** No Errors, 6 warnings.
 
 
-![CSS Validator](static/testing/css-warnings-testing.png)
+![CSS Warnings](static/testing/css-warnings-testing.png)
 
 <br/>
 
@@ -174,15 +174,6 @@ of this project, these warnings were ignored.
 
 <br/>
 
-
-**Recommendations:** Performance improvements are recommended in the following areas:
-
-
-**Conclusion:** As the project is sitting at 99% performance on Desktop, and 95% on Mobile, the suggestions are 
-taken under advisement, but are not implemented at this point in time.
-
-<br/>
-
 ----------
 
 # User Stories
@@ -226,11 +217,11 @@ have been implemented. User stories related to an adminstrator account have been
 
 - This bug was noticed in the console was navigating to a page that had a CKEditor Form element. 
 - It is worth noting that the CKEditor form works fine, and is fully operational, despite the error.
-- One suggestion from the CKEditor docs was to check if the passed argument points to the correct element. 
+- One suggestion from the [CKEditor docs](https://ckeditor.com/docs/ckeditor4/latest/guide/dev_errors.html#editor-incorrect-element) 
+  was to check if the passed argument points to the correct element. 
   I confirmed that it was, and also tried renaming the variable.
 - Another suggested solution from [stackoverflow](https://stackoverflow.com/questions/62426969/ckeditor-4-not-working-due-to-error-editor-incorrect-element)
 was to create a *dummy* `textarea` element and then initialize the editor after the declaration of the `textarea` element.
-- The bug did has not impacted functionality, but investigation is still ongoing.  
+- This bug has not impacted functionality, but investigations are still ongoing to find a resolution.   
 
 [Go back to README.md file](README.md).
-

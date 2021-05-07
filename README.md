@@ -5,11 +5,12 @@
 - [UX](#ux)
   - [User Stories](#user-stories)
   - [Design](#design)
-    - [Framework](#framework)
+    - [Frameworks](#frameworks)
     - [Color Scheme](#color-scheme)
     - [Icons](#icons)
     - [Typography](#typography)
   - [Wireframes](#wireframes)
+  - [Schema](#schema)
 - [Features](#features)
   - [Existing Features](#existing-features)
   - [Future Features](#future-features)
@@ -166,7 +167,7 @@ The database consists of x3 collections, which we can represent as follows:
   - **CRD Comments:** A registered user can create, read, and delete comments made on any post. Again, commenting
     makes use of the CKEditor, allowing the user to create rich, well-presented content. 
   - **Random Quote Generator:** As this is a blogging site, I thought it would be a nice feature for the user to see 
-    a random quote for further inspiration. The quote is located in the footer, and a fresh one is loaded on loading
+    a random quote for further inspiration. The quote is located in the footer, and a fresh one is retrieved on loading
     the page. 
 
 <br/>
