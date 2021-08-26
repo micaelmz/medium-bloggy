@@ -42,16 +42,6 @@ on community involvement and engagement in order to create the content.
 
 <br/>
 
-## UX
-
-This project is part of the [Code Institute](https://codeinstitute.net/) Full Stack Software Development course, 
-specifically **Module 3: Data Centric Development**. 
-
-The objective for this milestone project is to "*build a full-stack site that allows your users to manage a common 
-dataset about a particular domain*".
-
-<br/>
-
 ### User Stories
 
 - User Stories were written from the perspective of x2 different user(s):
@@ -381,8 +371,3 @@ SECRET_KEY : <your_secret_key>
 - [Logomakr](https://logomakr.com/) was used to create the site logo. 
 
 <br/>
-
-### Acknowledgments
-
-- [Precious Ijege](https://www.linkedin.com/in/precious-ijege-908a00168/?originalSubdomain=ng) - for his mentorship 
-  and guidance.
