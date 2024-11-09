@@ -1,12 +1,11 @@
 import os
+import sqlite3
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for, flash,
     redirect, session)
-from flask_pymongo import PyMongo
 from flask_ckeditor import CKEditor
 from flask_bootstrap import Bootstrap
-from bson.objectid import ObjectId
 from forms import RegisterForm, LoginForm, CreatePostForm, CommentForm
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import date
@@ -16,12 +15,30 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 
-app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.config["DATABASE"] = os.environ.get("DATABASE")
 app.secret_key = os.environ.get("SECRET_KEY")
 Bootstrap(app)
 ckeditor = CKEditor(app)
-mongo = PyMongo(app)
+
+def get_db_connection():
+    conn = sqlite3.connect(app.config["DATABASE"])
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def query_db(query, args=(), one=False):
+    conn = get_db_connection()
+    cur = conn.execute(query, args)
+    rv = cur.fetchall()
+    cur.close()
+    conn.close()
+    return (rv[0] if rv else None) if one else rv
+
+def execute_db(query, args=()):
+    conn = get_db_connection()
+    cur = conn.execute(query, args)
+    conn.commit()
+    cur.close()
+    conn.close()
 
 
 # ---------------- #
@@ -34,7 +51,7 @@ def get_all_posts():
     '''
     Read all blog posts from the database.
     '''
-    posts = list(mongo.db.blog_posts.find())
+    posts = query_db('SELECT * FROM blog_posts')
     return render_template("index.html", all_posts=posts)
 
 
@@ -48,8 +65,7 @@ def register():
     if form.validate_on_submit():
 
         # check if email already exists in database
-        existing_user = mongo.db.users.find_one(
-            {"email": form.email.data})
+        existing_user = query_db('SELECT * FROM users WHERE email = ?', [form.email.data], one=True)
 
         if existing_user:
             flash("You've already signed up with that email, log in instead!")
@@ -67,7 +83,8 @@ def register():
             "name": form.name.data
         }
         # insert new_user into the database
-        mongo.db.users.insert_one(new_user)
+        execute_db('INSERT INTO users (email, password, name) VALUES (?, ?, ?)',
+                   [new_user["email"], new_user["password"], new_user["name"]])
 
         # put the new user into 'session' cookie
         session["user"] = form.name.data
@@ -90,7 +107,7 @@ def login():
         password = form.password.data
 
         # check if email already exists
-        existing_user = mongo.db.users.find_one({"email": email})
+        existing_user = query_db('SELECT * FROM users WHERE email = ?', [email], one=True)
         # if email doesn't exist or password incorrect
         if not existing_user:
             flash("That email or password does not exist, please try again.")
@@ -114,9 +131,8 @@ def profile(username):
 
     Retrieve all the users Posts.
     '''
-    username = mongo.db.users.find_one(
-        {"name": session["user"]})["name"]
-    posts = mongo.db.blog_posts.find({"author": username})
+    username = query_db('SELECT * FROM users WHERE name = ?', [session["user"]], one=True)["name"]
+    posts = query_db('SELECT * FROM blog_posts WHERE author = ?', [username])
     # if logged in
     if session["user"]:
         return render_template("profile.html", username=username, posts=posts)
@@ -146,9 +162,8 @@ def show_post(post_id):
     '''
     form = CommentForm()
     # find the requested post
-    requested_post = mongo.db.blog_posts.find_one({"_id": ObjectId(post_id)})
-    requested_post_comments = mongo.db.blog_comments.find(
-        {"parent_post": ObjectId(post_id)})
+    requested_post = query_db('SELECT * FROM blog_posts WHERE id = ?', [post_id], one=True)
+    requested_post_comments = query_db('SELECT * FROM blog_comments WHERE parent_post = ?', [post_id])
 
     # commenting on a post
     if form.validate_on_submit():
@@ -159,10 +174,11 @@ def show_post(post_id):
         new_comment = {
             "text": form.comment_text.data,
             "comment_author": session["user"],
-            "parent_post": ObjectId(post_id)
+            "parent_post": post_id
         }
 
-        mongo.db.blog_comments.insert_one(new_comment)
+        execute_db('INSERT INTO blog_comments (text, comment_author, parent_post) VALUES (?, ?, ?)',
+                   [new_comment["text"], new_comment["comment_author"], new_comment["parent_post"]])
     return render_template("post.html", post=requested_post,
                            comments=requested_post_comments, form=form)
 
@@ -187,7 +203,8 @@ def create_post():
                 "author": session["user"],
                 "date": date.today().strftime("%B %d, %Y")
             }
-            mongo.db.blog_posts.insert_one(new_post)
+            execute_db('INSERT INTO blog_posts (title, subtitle, body, img_url, author, date) VALUES (?, ?, ?, ?, ?, ?)',
+                       [new_post["title"], new_post["subtitle"], new_post["body"], new_post["img_url"], new_post["author"], new_post["date"]])
             flash("Post Successfully Added")
             return redirect(url_for("get_all_posts"))
         return render_template("create_post.html", form=form)
@@ -203,7 +220,7 @@ def edit_post(post_id):
 
     Update all Post data on submit.
     '''
-    post = mongo.db.blog_posts.find_one({"_id": ObjectId(post_id)})
+    post = query_db('SELECT * FROM blog_posts WHERE id = ?', [post_id], one=True)
 
     edit_form = CreatePostForm(
         title=post["title"],
@@ -217,7 +234,8 @@ def edit_post(post_id):
         post["subtitle"] = edit_form.subtitle.data
         post["img_url"] = edit_form.img_url.data
         post["body"] = edit_form.body.data
-        mongo.db.blog_posts.update({"_id": ObjectId(post_id)}, post)
+        execute_db('UPDATE blog_posts SET title = ?, subtitle = ?, img_url = ?, body = ? WHERE id = ?',
+                   [post["title"], post["subtitle"], post["img_url"], post["body"], post_id])
         return redirect(url_for("show_post", post_id=post_id))
     return render_template("create_post.html", form=edit_form, is_edit=True)
 
@@ -230,7 +248,7 @@ def delete_post(post_id):
 
     Redirect back to main page on submit.
     '''
-    mongo.db.blog_posts.remove({"_id": ObjectId(post_id)})
+    execute_db('DELETE FROM blog_posts WHERE id = ?', [post_id])
     flash("Post Successfully Deleted")
     return redirect(url_for('get_all_posts'))
 
@@ -241,7 +259,7 @@ def delete_comment(comment_id):
     '''
     Delete a Comment by Id.
     '''
-    mongo.db.blog_comments.remove({"_id": ObjectId(comment_id)})
+    execute_db('DELETE FROM blog_comments WHERE id = ?', [comment_id])
     flash("Comment Successfully Deleted")
     post_id = request.args.get('post_id')
     return redirect(url_for("show_post", post_id=post_id))
@@ -254,7 +272,7 @@ def search():
     Search for a Post by Title, Subtitle.
     '''
     query = request.form.get("query")
-    posts = list(mongo.db.blog_posts.find({"$text": {"$search": query}}))
+    posts = query_db('SELECT * FROM blog_posts WHERE title LIKE ? OR subtitle LIKE ?', ['%' + query + '%', '%' + query + '%'])
     return render_template("index.html", all_posts=posts)
 
 

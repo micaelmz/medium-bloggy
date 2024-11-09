@@ -1,4 +1,3 @@
-
 ![Medium Bloggy Responsive](static/img/am-i-responsive.PNG)
 
 - [Overview](#overview)
@@ -204,8 +203,8 @@ of them here:
   
 #### Python
 - [Python 3.9](https://www.python.org/downloads/release/python-390/) - back-end programming language. 
-- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas2) - to store database in the cloud. 
-- [PyMongo 3.11.2](https://pymongo.readthedocs.io/en/stable/) - Python API for working with MongoDB.
+- [SQLite](https://www.sqlite.org/index.html) - to store database locally.
+- [sqlite3](https://docs.python.org/3/library/sqlite3.html) - Python API for working with SQLite.
 
 <br/>
 
@@ -248,7 +247,7 @@ In order to run this project locally on your own system, you will need the follo
 - [PIP](https://pypi.org/project/pip/) to install all app requirements.
 - Any IDE such as Microsoft [Visual Studio Code](https://code.visualstudio.com/).
 - [GIT](https://git-scm.com/) for cloning and version control.
-- [MongoDB](https://www.mongodb.com/) to develop your own database either locally or remotely on MongoDB Atlas.
+- [SQLite](https://www.sqlite.org/index.html) to develop your own database locally.
 
 Next, there's a series of steps to take in order to proceed with local deployment:
 
@@ -268,9 +267,7 @@ Create a `env.py` file with the relevant credentials. See the sample env.py file
 ```
 import os
 
-os.environ.setdefault("MONGO_URI", "YOUR_MONGO_URI")
-
-os.environ.setdefault("MONGO_DBNAME", "YOUR_MONGO_DBNAME")
+os.environ.setdefault("DATABASE", "YOUR_DATABASE_PATH")
 
 os.environ.setdefault("SECRET_KEY", "YOUR_SECRET_KEY")
 
@@ -283,40 +280,6 @@ os.environ.setdefault("PORT", "YOUR_PORT")
 - Install all requirements from the requirements.txt file using this command:
 
 `sudo -H pip3 -r requirements.txt`
-
-- Sign up for a free account on [MongoDB](https://www.mongodb.com/) and create a new Database called `blog`. 
-  The Collections in that database should be as follows:
-
-**blog_comments**
-
-```
-_id: <ObjectId>
-text: <string>
-comment_author: <string>
-parent_post: <ObjectId>
-
-```
-
-**blog_posts**
-
-```
-_id: <ObjectId>
-title: <string>
-subtitle: <string>
-body: <string>
-img_url: <string>
-author: <string>
-date: <string>
-```
-
-**users**
-
-```
-_id: <ObjectId>
-email: <string>
-password: <string>
-name: <string>
-```
 
 - You should now be able to launch your app using:
 
@@ -347,8 +310,7 @@ the following steps were taken:
 
 ```
 IP : 0.0.0.0
-MONGO_DBNAME: <your_MongoDB_name>
-MONGO_URI : <link_to_your_MongoDB>
+DATABASE: <your_database_path>
 PORT : 5000
 SECRET_KEY : <your_secret_key>
 ```
